@@ -13,6 +13,6 @@ file="${file%.*}" # Removing extension
 mkdir "converted$file"
 dir="converted$file"
 for i in $(eval echo {0..$pages}); do
-    convert -density 500 $file["$i"].pdf  $dir/$file"$i".jpg;
+    convert -density 500 $file.pdf["$i"]  $dir/$file"$i".jpg;
 done;
 echo "Done!"
