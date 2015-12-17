@@ -1,16 +1,14 @@
 #!/bin/bash
 
-echo "Enter number of pages: ";
-read pages; # No idea for getting number of pages for now
-pages=$(($pages-1))  # Numeration starts from 0
-file=$1
-file=$(basename "$file")
+file=$1 # First cmd argument
+pages=`pdfinfo -meta $1 | grep Pages | cut -d' ' -f11` #Getting pages number from meta (-f 11 is stable, AFAIK)
+file=$(basename "$file") # Dropping path
 file="${file%.*}" # Removing extension
-if [ ! -d "converted$file" ]; then
-    mkdir "converted$file";
-fi;
 dir="converted$file";
+if [ ! -d "$dir" ]; then
+    mkdir "$dir";
+fi;
 for i in $(eval echo {0..$pages}); do
-    convert -density 500 $file.pdf["$i"]  $dir/$file"$i".jpg;
+    convert -density 500 $file.pdf["$i"]  $dir/$file"$i".jpg; # Density for it to look readable
 done;
 echo "Done!";
