@@ -19,3 +19,9 @@ au BufRead,BufNewFile *.php set ft=html "Format php as html
 :nmap <Space> i
 command E :execute ':Explore'
 command W :execute ':silent :w !sudo tee % > /dev/null' | edit!
+command L :exec Latex()
+
+function Latex()
+    :w
+    :!pdflatex %
+endfunction
