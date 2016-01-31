@@ -25,3 +25,6 @@ function Latex()
     :w
     :!pdflatex %
 endfunction
+
+:map <C-p> ciw"<C-r>""<Esc>
+:map <C-o> j.
