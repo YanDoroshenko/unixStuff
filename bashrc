@@ -9,9 +9,13 @@ export VISUAL=vim
 export EDITOR=$VISUAL
 
 
-## ALIAS SECTION##
+## ALIAS SECTION ##
 
 alias sudo='sudo '
+
+## Touchpad on/off ##
+alias t='synclient TouchpadOff=0'
+alias nt='synclient TouchpadOff=1'
 
 ## Web server
 alias web='sudo /opt/lampp/xampp start'
