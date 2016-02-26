@@ -36,6 +36,7 @@ alias zal='cd /mnt/Files/Dropbox/studies/ZAL'
 alias zwa='cd /mnt/Files/Dropbox/studies/ZWA/project'
 alias docs='cd ~/Documents'
 alias rm='rm -r'
+alias k='cd /mnt/Files/Dropbox/studies/LinuxKernelChallenge/src'
 alias cp='cp -r'
 alias mkdir='mkdir -p'
 
@@ -65,7 +66,7 @@ extract () {
 alias p='ping -c 3 google.com'
 alias get='yaourt -S '
 alias unget='yaourt -Rncs '
-alias upd='yaourt -Syu '
+alias upd='yaourt -Syua '
 alias mess='yaourt -Qdt '
 alias list='yaourt -Q | grep'
 
