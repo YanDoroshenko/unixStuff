@@ -19,18 +19,13 @@ au BufRead,BufNewFile *.php set ft=html "Format php as html
 :nmap <Space> i
 command E :execute ':Explore'
 command W :execute ':silent :w !sudo tee % > /dev/null' | edit!
-command R :exec Scheme()
+command R :execute ':w ! racket -f % -i'
 command L :exec Latex()
 
 
 function Latex()
     :w
     :!pdflatex %
-endfunction
-
-function Scheme()
-    :w
-    :!scm %
 endfunction
 
 :map <C-p> ciw"<C-r>""<Esc>

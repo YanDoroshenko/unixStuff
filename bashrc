@@ -10,7 +10,7 @@ export EDITOR=$VISUAL
 
 
 ## ALIAS SECTION ##
-
+alias o='poweroff'
 alias sudo='sudo '
 
 ## Touchpad on/off ##
@@ -64,11 +64,11 @@ extract () {
 
 #PACKAGE ALIASES
 alias p='ping -c 3 google.com'
-alias get='yaourt -S '
+alias g='yaourt -S '
 alias unget='yaourt -Rncs '
-alias upd='yaourt -Syua '
-alias mess='yaourt -Qdt '
-alias list='yaourt -Q | grep'
+alias u='yaourt -Syua '
+alias m='yaourt -Qdt '
+alias l='yaourt -Q | grep'
 
 PS1='\[\e[1;32m\]\u\[\e[m\] \[\e[0;37m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] '
 
