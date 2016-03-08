@@ -37,6 +37,7 @@ alias zwa='cd /mnt/Files/Dropbox/studies/ZWA/project'
 alias docs='cd ~/Documents'
 alias rm='rm -r'
 alias k='cd /mnt/Files/Dropbox/studies/LinuxKernelChallenge/src'
+alias s='cd /mnt/Files/Dropbox/studies'
 alias cp='cp -r'
 alias mkdir='mkdir -p'
 
