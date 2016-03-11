@@ -17,11 +17,6 @@ alias sudo='sudo '
 alias t='synclient TouchpadOff=0'
 alias nt='synclient TouchpadOff=1'
 
-## Web server
-alias web='sudo /opt/lampp/xampp start'
-alias noweb='sudo /opt/lampp/xampp stop'
-alias sun='ssh dorosyan@sunray1.felk.cvut.cz'
-
 #FS ALIASES
 alias ls='ls --color=auto'
 alias la='ls -a --color=auto'
@@ -66,7 +61,7 @@ extract () {
 #PACKAGE ALIASES
 alias p='ping -c 3 google.com'
 alias g='yaourt -S '
-alias unget='yaourt -Rncs '
+alias ug='yaourt -Rncs '
 alias u='yaourt -Syua '
 alias m='yaourt -Qdt '
 alias l='yaourt -Q | grep'
