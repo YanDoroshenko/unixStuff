@@ -17,14 +17,18 @@ alias sudo='sudo '
 alias t='synclient TouchpadOff=0'
 alias nt='synclient TouchpadOff=1'
 
-#FS ALIASES
-alias ls='ls --color=auto'
-alias la='ls -a --color=auto'
-alias ll='ls -l --color=auto'
+# Coloring output
+alias ls='ls --color=always'
+alias dmesg='dmesg --color=always'
+alias grep='grep --color=always'
+alias gcc='gcc -fdiagnostics-color=always'
+alias pacman='pacman --color=always'
+alias dir='dir --color=always'
+alias la='ls -a --color=always'
+alias ll='ls -l --color=always'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../../'
-alias grep='grep --color=auto'
 alias downloads='cd ~/Downloads'
 alias drop='cd /mnt/Files/Dropbox'
 alias zal='cd /mnt/Files/Dropbox/studies/ZAL'
@@ -66,10 +70,15 @@ alias u='yaourt -Syua '
 alias m='yaourt -Qdt '
 alias l='yaourt -Q | grep'
 
-PS1='\[\e[1;32m\]\u\[\e[m\] \[\e[0;37m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] '
-
 # Convert pdf to jpg
 
 function pdftojpg {
 bash /home/yan/git/unixStuff/pdftojpg.sh "$1";
 }
+
+# Color prompt
+if [[ ${EUID} == 0 ]]; then
+PS1='\[\e[1;31m\]\u\[\e[m\] \[\e[0;37m\]\w\[\e[m\] \[\e[1;31m\]\$\[\e[m\] '
+else
+PS1='\[\e[1;32m\]\u\[\e[m\] \[\e[0;37m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] '
+fi
