@@ -1,10 +1,11 @@
 syntax on
 if $TERM=="xterm"
+    set t_Co=256
+    hi LineNr ctermfg=darkgrey
+    hi Normal ctermbg=235
     set background=dark
-    let g:colors_name="monokai"
-    hi Normal ctermfg=231 ctermbg=235 cterm=NONE guifg=#f8f8f2 guibg=#272822 gui=NONE
 endif
-highlight LineNr ctermfg=darkgrey
+
 set ignorecase hlsearch number smarttab shiftwidth=4 exrc secure autoread
 
 au FileType make set noet ci pi sts=0 sw=4 ts=4 "Indents and formats for makefiles
