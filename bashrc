@@ -66,7 +66,7 @@ extract () {
 alias p='ping -c 3 google.com'
 alias g='yaourt -S '
 alias ug='yaourt -Rncs '
-alias u='yaourt -Syua '
+alias u='yaourt -Syu --aur '
 alias m='yaourt -Qdt '
 alias l='yaourt -Q | grep'
 

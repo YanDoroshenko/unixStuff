@@ -1,6 +1,6 @@
-set background=dark
-colorscheme materialbox
 set lines=40 columns=80
+set background=dark
+colo obsidian
 
 set guioptions-=r
 set guioptions-=L

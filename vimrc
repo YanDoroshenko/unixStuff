@@ -4,6 +4,10 @@ if $TERM=="xterm"
     hi LineNr ctermfg=darkgrey
     hi Normal ctermbg=235
     set background=dark
+else 
+    hi LineNr ctermfg=darkgrey
+    hi Normal ctermbg=235
+    set background=dark
 endif
 
 set ignorecase hlsearch number smarttab shiftwidth=4 exrc secure autoread
@@ -13,11 +17,17 @@ au BufRead,BufNewFile *.php set ft=html "Format php as html
 
 :filetype plugin on
 :filetype indent on
+
+:map <C-p> ciw"<C-r>""<Esc>
+:map <C-o> j.
+:map <C-a> ggvG$
+:map <C-c> "+y
+:map <C-x> "+d
 :imap ;; <Esc>
 :nmap <C-v> "+p
 :nmap <C-l> gg=G
-:map <C-c> "+y
 :nmap <Space> i
+
 command E :execute ':Explore'
 command W :execute 'w !sudo tee % > /dev/null' | edit!
 command R :execute ':w ! racket -f % -i'
@@ -28,6 +38,3 @@ function Latex()
     :w
     :!pdflatex %
 endfunction
-
-:map <C-p> ciw"<C-r>""<Esc>
-:map <C-o> j.

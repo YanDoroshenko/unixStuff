@@ -1,2 +1,1 @@
-find /home/`whoami`/.local/share/Steam -name "libgcc_s.so*" -exec rm {} \;
-find /home/`whoami`/.local/share/Steam -name "libstdc++.so*" -exec rm {} \;
+rm ~/.local/share/Steam/ubuntu12_32/steam-runtime/i386/usr/lib/i386-linux-gnu/libstdc++.so.6
