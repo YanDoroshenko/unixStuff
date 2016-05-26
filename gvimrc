@@ -1,6 +1,5 @@
-set lines=40 columns=80
-set background=dark
 colo obsidian
+set lines=40 columns=80
 
 set guioptions-=r
 set guioptions-=L
