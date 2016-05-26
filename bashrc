@@ -13,6 +13,9 @@ export EDITOR=$VISUAL
 alias o='poweroff'
 alias sudo='sudo '
 
+## POSTGRESQL ##
+alias db='sudo systemctl start postgresql.service; sudo -i -u postgres; sudo systemctl stop postgresql.service;'
+
 ## Touchpad on/off ##
 alias t='synclient TouchpadOff=0'
 alias nt='synclient TouchpadOff=1'
@@ -30,13 +33,10 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../../'
 alias downloads='cd ~/Downloads'
-alias drop='cd /mnt/Files/Dropbox'
-alias zal='cd /mnt/Files/Dropbox/studies/ZAL'
-alias zwa='cd /mnt/Files/Dropbox/studies/ZWA/project'
+alias drop='cd ~/Dropbox'
 alias docs='cd ~/Documents'
 alias rm='rm -r'
-alias k='cd /mnt/Files/Dropbox/studies/LinuxKernelChallenge/src'
-alias s='cd /mnt/Files/Dropbox/studies'
+alias s='cd ~/Dropbox/studies'
 alias cp='cp -r'
 alias mkdir='mkdir -p'
 
