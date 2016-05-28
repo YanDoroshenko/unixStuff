@@ -14,7 +14,16 @@ alias o='poweroff'
 alias sudo='sudo '
 
 ## POSTGRESQL ##
-alias db='sudo systemctl start postgresql.service; sudo -i -u postgres; sudo systemctl stop postgresql.service;'
+alias db='
+if [[ $(systemctl | grep postgres) ]]; then
+    echo "Stopping local PostgreSQL server"
+    sudo systemctl stop postgresql.service
+    echo "PostgreSQL stopped"
+else
+    echo "Starting local PostgreSQL server"
+    sudo systemctl start postgresql.service;
+    echo "PostgreSQL running"
+fi'
 
 ## Touchpad on/off ##
 alias t='synclient TouchpadOff=0'
@@ -73,12 +82,12 @@ alias l='yaourt -Q | grep'
 # Convert pdf to jpg
 
 function pdftojpg {
-bash /home/yan/git/unixStuff/pdftojpg.sh "$1";
+    bash /home/yan/git/unixStuff/pdftojpg.sh "$1";
 }
 
 # Color prompt
 if [[ ${EUID} == 0 ]]; then
-PS1='\[\e[1;31m\]\u\[\e[m\] \[\e[0;37m\]\w\[\e[m\] \[\e[1;31m\]\$\[\e[m\] '
+    PS1='\[\e[1;31m\]\u\[\e[m\] \[\e[0;37m\]\w\[\e[m\] \[\e[1;31m\]\$\[\e[m\] '
 else
-PS1='\[\e[1;32m\]\u\[\e[m\] \[\e[0;37m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] '
+    PS1='\[\e[1;32m\]\u\[\e[m\] \[\e[0;37m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] '
 fi
