@@ -4,10 +4,6 @@ if $TERM=="xterm"
     hi LineNr ctermfg=darkgrey
     hi Normal ctermbg=235
     set background=dark
-else 
-    hi LineNr ctermfg=darkgrey
-    hi Normal ctermbg=235
-    set background=dark
 endif
 
 set ignorecase hlsearch number smarttab shiftwidth=4 exrc secure autoread
