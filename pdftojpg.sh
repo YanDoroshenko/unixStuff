@@ -18,7 +18,7 @@ if [ ! -d $dir ]; then
     mkdir $dir
 fi
 for i in $(eval echo {0..$pages}); do
-    convert -density 50 $file[$i]  $dir/"$short"_Page$(($i+1)).jpg # Density for it to look readable
+    convert -density 500 $file[$i]  $dir/"$short"_Page$(($i+1)).jpg # Density for it to look readable
     echo "Page $((i+1)) of $((pages+1)) converted" # Progress
 done
 echo "Done!"
