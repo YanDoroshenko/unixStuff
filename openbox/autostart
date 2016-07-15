@@ -1,0 +1,4 @@
+lxpanel &
+plank &
+xcompmgr &
+nitrogen --restore &
