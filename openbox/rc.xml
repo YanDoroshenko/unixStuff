@@ -360,6 +360,11 @@
 	    <command>xfce4-screenshooter</command>
 	</action>
     </keybind>
+    <keybind key="C-A-c">
+	<action name="Execute">
+	    <command>xfce4-popup-clipman</command>
+	</action>
+    </keybind>
   </keyboard>
   <mouse>
     <dragThreshold>1</dragThreshold>
