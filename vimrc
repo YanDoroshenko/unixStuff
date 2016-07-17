@@ -1,23 +1,39 @@
-syntax on "Syntax highlightign
+"Syntax highlighting
+syntax on 
 
-if $TERM=="xterm" "Color scheme settings for virtual console
+"Color scheme settings for virtual console
+if $TERM=="xterm" 
     set t_Co=256
-    "hi LineNr ctermfg=darkgrey
+    hi LineNr ctermfg=darkgrey
     hi Normal ctermbg=235
     set background=dark
 endif
 
-set ignorecase "Case insensitive search by default
-set hlsearch "Highlight all search matches
-set number "Show line numbers
-set smarttab shiftwidth=4 "Tab produces shiftwidth spaces
-set exrc secure "Load default config file (securely)
-set autoread "Files are not realoaded until external command
+"Case insensitive search by default
+set ignorecase 
 
-au FileType make set noet ci pi sts=0 sw=4 ts=4 "Indents and formats for makefiles
-au BufRead,BufNewFile *.php set ft=html "Format php as html
+"Highlight all search matches
+set hlsearch 
 
-:filetype plugin indent on "Enable plugins for file types (.c, .java, .python, Makefile, etc.) and indent files accordingly
+"Show line numbers
+set number 
+
+"Tab produces shiftwidth spaces
+set smarttab shiftwidth=4 
+
+"Load default config file (securely)
+set exrc secure 
+
+"Files are not realoaded until external command
+set autoread 
+
+
+"Indents and formats for makefiles
+au FileType make set noet ci pi sts=0 sw=4 ts=4 
+
+"Enable plugins for file types (.c, .java, .python, Makefile, etc.) and indent files accordingly
+:filetype plugin indent on 
+
 
 "Surround the word with quotes on Ctrl+p
 :map <C-p> ciw"<C-r>""<Esc> 
@@ -43,20 +59,28 @@ au BufRead,BufNewFile *.php set ft=html "Format php as html
 "Reformat the whole file on Ctrl+l
 :nmap <C-l> gg=G
 
+
 "Enter Insert mode on Space
 :nmap <Space> i
 
-command E :exec Explorer() "Execute Explorer() function
-command W :exec 'w !sudo tee % > /dev/null' | edit! "Save as sudo
-command L :exec Latex() "Execute Latex() function
+"Execute Explorer() function
+command E :exec Explorer() 
+
+"Save as sudo
+command W :exec 'w !sudo tee % > /dev/null' | edit! 
+
+"Execute Latex() function
+command L :exec Latex() 
 
 
-function Latex() "Function to build Latex files
-    :w           "Save
-    :!pdflatex % "Run pdflatex on current file
+"Function to build Latex files
+function Latex() 
+    :w           
+    :!pdflatex % 
 endfunction
 
-function Explorer() "Function to open file explorer in vertical split mode
-    :30vsp          "Split
-    :Explore        "Open explorer
+"Function to open file explorer in vertical split mode
+function Explorer() 
+    :30vsp          
+    :Explore       
 endfunction
