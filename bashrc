@@ -13,6 +13,7 @@ export EDITOR=$VISUAL
 # General system aliases #
 alias o='poweroff'
 alias sudo='sudo '
+alias k='xmodmap -e "keycode 134 = Menu"'
 
 # Local PostgreSQL server #
 alias db='
