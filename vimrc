@@ -59,9 +59,13 @@ au FileType make set noet ci pi sts=0 sw=4 ts=4
 "Reformat the whole file on Ctrl+l
 :nmap <C-l> gg=G
 
-
 "Enter Insert mode on Space
 :nmap <Space> i
+
+"Format XML on F5
+map <F5> :%s/<\([^>]\)*>/\r&\r/g<enter>:g/^$/d<enter>vat=
+
+:nmap <F6> :v/\S/d<Enter>:noh<Enter>
 
 "Execute Explorer() function
 command E :exec Explorer() 
@@ -71,9 +75,6 @@ command W :exec 'w !sudo tee % > /dev/null' | edit!
 
 "Execute Latex() function
 command L :exec Latex() 
-
-"Execute FormatXML() function
-command! XML call FormatXML()
 
 "Function to build Latex files
 function Latex() 
@@ -85,33 +86,4 @@ endfunction
 function Explorer() 
     :30vsp          
     :Explore       
-endfunction
-
-"Extremely useful XML formatting function
-function! FormatXML()
-  " save the filetype so we can restore it later
-  let l:origft = &ft
-  set ft=
-  " delete the xml header if it exists. This will
-  " permit us to surround the document with fake tags
-  " without creating invalid xml.
-  1s/<?xml .*?>//e
-  " insert fake tags around the entire document.
-  " This will permit us to pretty-format excerpts of
-  " XML that may contain multiple top-level elements.
-  0put ='<XML>'
-  $put ='</XML>'
-  silent %!xmllint --format -
-  " xmllint will insert an <?xml?> header. it's easy enough to delete
-  " if you don't want it.
-  " delete the fake tags
-  2d
-  $d
-  " restore the 'normal' indentation, which is one extra level
-  " too deep due to the extra tags we wrapped around the document.
-  silent %<
-  " back to home
-  1
-  " restore the filetype
-  exe "set ft=" . l:origft
 endfunction
