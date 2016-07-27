@@ -63,7 +63,7 @@ au FileType make set noet ci pi sts=0 sw=4 ts=4
 :nmap <Space> i
 
 "Format XML on F5
-map <F5> :%s/<\([^>]\)*>/\r&\r/g<enter>:g/^$/d<enter>vat=
+map <F5> :%s/<\([^>]\)*>/\r&\r/g<enter>:g/^$/d<enter>vat=gg=G<F6>gg:noh<Enter>
 
 :nmap <F6> :v/\S/d<Enter>:noh<Enter>
 
