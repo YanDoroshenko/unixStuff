@@ -15,6 +15,8 @@ alias o='
 read -p "Are you sure?(Y/n) " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     poweroff
+else
+    echo
 fi
 '
 alias sudo='sudo '
