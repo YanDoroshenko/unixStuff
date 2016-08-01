@@ -11,7 +11,12 @@ export EDITOR=$VISUAL
 ## ALIAS SECTION ##
 
 # General system aliases #
-alias o='poweroff'
+alias o='
+read -p "Are you sure?(Y/n) " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    poweroff
+fi
+'
 alias sudo='sudo '
 alias k='xmodmap -e "keycode 134 = Menu"'
 
