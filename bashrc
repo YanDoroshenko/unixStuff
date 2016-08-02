@@ -25,13 +25,17 @@ alias k='xmodmap -e "keycode 134 = Menu"'
 # Local PostgreSQL server #
 alias db='
 if [[ $(systemctl | grep postgres) ]]; then
-    echo "Stopping local PostgreSQL server"
-    sudo systemctl stop postgresql.service
-    echo "PostgreSQL stopped"
+    read -p "PostgreSQL server running. Stop?(Y/n) " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+	sudo systemctl stop postgresql.service
+    fi
 else
-    echo "Starting local PostgreSQL server"
-    sudo systemctl start postgresql.service;
-    echo "PostgreSQL running"
+    read -p "PostgreSQL server not running. Start?(Y/n) " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+	sudo systemctl start postgresql.service
+    fi
 fi'
 
 # Touchpad on/off. Does not work in Wayland #
