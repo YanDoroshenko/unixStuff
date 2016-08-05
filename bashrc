@@ -76,7 +76,7 @@ alias m='yaourt -Qdt '
 alias l='yaourt -Q | grep'
 
 # Extraction script #
-extract () {
+x () {
     if [ -f $1 ] ; then
 	case $1 in
 	    *.tar.bz2)     tar xvjf $1    ;;
