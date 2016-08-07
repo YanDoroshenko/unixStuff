@@ -47,7 +47,7 @@ alias ls='ls --color=always'
 alias dmesg='dmesg --color=always'
 alias grep='grep --color=always'
 alias gcc='gcc -fdiagnostics-color=always'
-alias pacman='pacman --color=always'
+alias pacman='powerpill --color=always'
 alias dir='dir --color=always'
 alias la='ls -a --color=always'
 alias ll='ls -l --color=always'
@@ -69,11 +69,11 @@ alias vpn='sudo openconnect vpn.cleverlance.com'
 alias p='ping -c 3 google.com'
 
 # Package aliases #
-alias g='yaourt -S '
-alias ug='yaourt -Rncs '
-alias u='yaourt -Syu --aur '
-alias m='yaourt -Qdt '
-alias l='yaourt -Q | grep'
+alias g='packer -S '
+alias ug='sudo powerpill -Rncs '
+alias u='packer -Syyuu '
+alias m='sudo powerpill -Qdt '
+alias l='powerpill -Q | grep'
 
 # Extraction script #
 x () {
