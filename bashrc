@@ -73,7 +73,7 @@ alias g='packer -S --noedit'
 alias ug='packer -Rncs '
 alias u='packer -Syyuu --noedit'
 alias m='packer -Qdt '
-alias l='packer -Q | grep'
+alias l='pacman -Qe | grep'
 
 # Extraction script #
 x () {
