@@ -18,7 +18,7 @@ else
 	echo "Density is too low, text will be unreadable">&2
 	exit 1
     fi
-    if [ $density -gt 2000]; then
+    if [ $density -gt 2000 ]; then
 	echo "Density is too high, converting will take forever">&2
 	exit 1
     fi
