@@ -23,7 +23,7 @@ else
 	exit 1
     fi
 fi
-pages=`pdfinfo -meta $file | grep Pages | cut -d' ' -f11` # Getting pages number from meta (-f 11 is stable, AFAIK)
+pages=`pdfinfo $file | grep Pages | cut -d' ' -f11` # Getting pages number from meta (-f 11 is stable, AFAIK)
 pages=$(($pages-1)) # Pages count from 0
 short=$(basename $file) # Dropping path
 short=${short%.*} # Removing extension
@@ -32,8 +32,12 @@ if [ ! -d $dir ]; then
     mkdir $dir
 fi
 echo "Starting convertation with density $density" 
-for i in $(eval echo {0..$pages}); do
-    convert -density $density $file[$i]  $dir/"$short"_Page$(($i+1)).jpg # Density for it to look readable
-    echo "Page $((i+1)) of $((pages+1)) converted" # Progress
-done
+if [ $pages = 0 ]; then
+    convert -flatten -density $density $file[$pages]  $dir/"$short"_Page$(($pages+1)).jpg # Density for it to look readable
+else 
+    for i in $(eval echo {0..$pages}); do
+	convert -flatten -density $density $file[$i]  $dir/"$short"_Page$(($i+1)).jpg # Density for it to look readable
+	echo "Page $((i+1)) of $((pages+1)) converted" # Progress
+    done
+fi
 echo "Done!"
