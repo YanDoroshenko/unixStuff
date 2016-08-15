@@ -70,7 +70,7 @@ alias p='ping -c 3 google.com'
 
 # Package aliases #
 alias g='packer -S --noedit'
-alias ug='packer -Rncs '
+alias ug='sudo pacman -Rncs '
 alias u='packer -Syyuu --noedit'
 alias m='packer -Qdt '
 alias l='pacman -Qe | grep'
