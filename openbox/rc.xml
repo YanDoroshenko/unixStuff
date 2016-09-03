@@ -227,22 +227,22 @@
       <wrap>no</wrap>
     </action>
   </keybind>
-  <keybind key="W-F1">
+  <keybind key="W-1">
     <action name="GoToDesktop">
       <to>1</to>
     </action>
   </keybind>
-  <keybind key="W-F2">
+  <keybind key="W-2">
     <action name="GoToDesktop">
       <to>2</to>
     </action>
   </keybind>
-  <keybind key="W-F3">
+  <keybind key="W-3">
     <action name="GoToDesktop">
       <to>3</to>
     </action>
   </keybind>
-  <keybind key="W-F4">
+  <keybind key="W-4">
     <action name="GoToDesktop">
       <to>4</to>
     </action>
@@ -342,17 +342,17 @@
   </keybind>
   <keybind key="XF86AudioLowerVolume">
     <action name="Execute">
-      <command>pulseaudio-ctl down</command>
+      <command>pulseaudiocontrol down</command>
     </action>
   </keybind>
   <keybind key="XF86AudioRaiseVolume">
     <action name="Execute">
-      <command>pulseaudio-ctl up</command>
+      <command>pulseaudiocontrol up</command>
     </action>
   </keybind>
   <keybind key="XF86AudioMute">
     <action name="Execute">
-      <command>pulseaudio-ctl mute</command>
+      <command>pulseaudiocontrol mute</command>
     </action>
   </keybind>
   <keybind key="Print">
