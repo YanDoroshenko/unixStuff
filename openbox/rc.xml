@@ -340,6 +340,16 @@
       <command>synapse</command>
     </action>
   </keybind>
+  <keybind key="XF86MonBrightnessUp">
+      <action name="Execute">
+	  <command>light -A 10</command>
+      </action>
+  </keybind>
+  <keybind key="XF86MonBrightnessDown">
+      <action name="Execute">
+	  <command>light -U 10</command>
+      </action>
+  </keybind>
   <keybind key="XF86AudioLowerVolume">
     <action name="Execute">
       <command>pulseaudiocontrol down</command>
