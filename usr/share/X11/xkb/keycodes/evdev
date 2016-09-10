@@ -72,10 +72,10 @@ default xkb_keycodes "evdev" {
 	<RALT> = 108;
 	// Microsoft keyboard extra keys
 	<LWIN> = 133;
-	<RWIN> = 135;
-	<COMP> = 134;
-	alias <MENU> = <COMP>;
-
+	<RWIN> = 134;
+	<COMP> = 135;
+	alias <MENU> = <RWIN>;
+	
 	<ESC> = 9;
 	<FK01> = 67;
 	<FK02> = 68;
