@@ -31,8 +31,13 @@ set autoread
 "Indents and formats for makefiles
 au FileType make set noet ci pi sts=0 sw=4 ts=4 
 
+"GCC integration
+au BufEnter *.cpp compiler gcc
+
 "Enable plugins for file types (.c, .java, .python, Makefile, etc.) and indent files accordingly
 :filetype plugin indent on 
+
+:filetype plugin on
 
 
 "Surround the word with quotes on Ctrl+p
@@ -62,6 +67,9 @@ au FileType make set noet ci pi sts=0 sw=4 ts=4
 "Enter Insert mode on Space
 :nmap <Space> i
 
+"Add a closing tab
+:inoremap <F8> </<C-X><C-O>
+
 "Format XML on F5
 map <F5> :%s/<\([^>]\)*>/\r&\r/g<enter>:g/^$/d<enter>vat=gg=G<F6>gg:noh<Enter>
 
@@ -71,10 +79,18 @@ map <F5> :%s/<\([^>]\)*>/\r&\r/g<enter>:g/^$/d<enter>vat=gg=G<F6>gg:noh<Enter>
 command E :exec Explorer() 
 
 "Save as sudo
-command W :exec 'w !sudo tee % > /dev/null' | edit! 
+command W :exec 'silent w ! sudo tee > /dev/null %'
 
 "Execute Latex() function
 command L :exec Latex() 
+
+"Zip the current file
+command Z :exec Zip()
+
+function Zip()
+    :w
+    :!zip %:r.zip %
+endfunction
 
 "Function to build Latex files
 function Latex() 
