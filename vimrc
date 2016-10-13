@@ -79,7 +79,7 @@ map <F5> :%s/<\([^>]\)*>/\r&\r/g<enter>:g/^$/d<enter>vat=gg=G<F6>gg:noh<Enter>
 command E :exec Explorer() 
 
 "Save as sudo
-command W :exec 'silent w ! sudo tee > /dev/null %'
+command W :exec 'silent w ! sudo tee > /dev/null %; redraw!'
 
 "Execute Latex() function
 command L :exec Latex() 
@@ -89,7 +89,8 @@ command Z :exec Zip()
 
 function Zip()
     :w
-    :!zip %:r.zip %
+    :silent !zip %:r.zip %
+    :redraw!
 endfunction
 
 "Function to build Latex files
