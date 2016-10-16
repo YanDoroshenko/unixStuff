@@ -79,8 +79,8 @@ map <F5> :%s/<\([^>]\)*>/\r&\r/g<enter>:g/^$/d<enter>vat=gg=G<F6>gg:noh<Enter>
 command E :exec Explorer() 
 
 "Save as sudo
-command W :exec 'silent w ! sudo tee > /dev/null %; redraw!'
-
+command W :exec ':silent w !sudo tee % > /dev/null' | :edit!
+ 
 "Execute Latex() function
 command L :exec Latex() 
 
