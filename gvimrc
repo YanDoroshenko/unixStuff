@@ -50,7 +50,7 @@ hi NonText guifg=#e0e2e4
 hi Pmenu guifg=#e0e2e4  guibg=#66747b
 hi PmenuSel guifg=#2f393c guibg=#678cb1
 hi Question guifg=#6699ff  
-hi Search guifg=#6699ff  
+hi Search guifg=#000000 guibg=#93c763
 hi SpecialKey guifg=#5889c0 
 hi StatusLine guifg=#e0e2e4  guibg=#678cb1  gui=none
 hi StatusLineNC guifg=#e0e2e4 guibg=#66747b  gui=none
