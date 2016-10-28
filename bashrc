@@ -69,10 +69,11 @@ alias vpn='sudo openconnect vpn.cleverlance.com'
 alias p='ping -c 3 google.com'
 
 # Package aliases #
-alias g='packer -S --noedit'
+alias pacaur='pacaur --color=auto --noedit --needed'
+alias g='pacaur -S '
 alias ug='sudo pacman -Rncs '
-alias u='packer -Syyuu --noedit'
-alias m='packer -Qdt '
+alias u='pacaur -Syyuu '
+alias m='pacaur -Qdt '
 alias l='pacman -Qe | grep'
 
 # Extraction script #
