@@ -80,7 +80,7 @@ map <F7> :%s/\n\{3,}/\r\r/e<Enter>
 command E :exec Explorer() 
 
 "Launch the edited file
-command XX :exec ':! ./%'
+command XX :exec Run()
 
 "C++ launch
 command GG :exec ':! g++ tests-main.cpp -o test && ./test'
@@ -110,4 +110,11 @@ endfunction
 function Explorer() 
     :30vsp          
     :Explore       
+endfunction
+
+"Run function
+function Run()
+    :w
+    :chmod +x %
+    :!./%
 endfunction
