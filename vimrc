@@ -1,4 +1,4 @@
-"Syntax highlighting
+"Synax highlighting
 syntax on 
 
 "Color scheme settings for virtual console
@@ -27,7 +27,6 @@ set exrc secure
 "Files are not realoaded until external command
 set autoread 
 
-
 "Indents and formats for makefiles
 au FileType make set noet ci pi sts=0 sw=4 ts=4 
 
@@ -44,7 +43,7 @@ au BufEnter *.cpp compiler gcc
 :map <C-p> ciw"<C-r>""<Esc> 
 
 "Repeat action on the next line on Ctrl+o
-:map <C-o> j. 
+:map <C-o> j.<Esc>
 
 "Select everything on Ctrl+a
 :map <C-a> ggvG$
@@ -73,14 +72,22 @@ au BufEnter *.cpp compiler gcc
 "Format XML on F5
 map <F5> :%s/<\([^>]\)*>/\r&\r/g<enter>:g/^$/d<enter>vat=gg=G<F6>gg:noh<Enter>
 
-:nmap <F6> :v/\S/d<Enter>:noh<Enter>
+nmap <F6> :v/\S/d<Enter>:noh<Enter>
+
+map <F7> :%s/\n\{3,}/\r\r/e<Enter>
 
 "Execute Explorer() function
 command E :exec Explorer() 
 
+"Launch the edited file
+command XX :exec ':! ./%'
+
+"C++ launch
+command GG :exec ':! g++ tests-main.cpp -o test && ./test'
+
 "Save as sudo
 command W :exec ':silent w !sudo tee % > /dev/null' | :edit!
- 
+
 "Execute Latex() function
 command L :exec Latex() 
 
