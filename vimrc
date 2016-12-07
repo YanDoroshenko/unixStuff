@@ -40,7 +40,7 @@ au BufEnter *.cpp compiler gcc
 
 
 "Surround the word with quotes on Ctrl+p
-:map <C-p> ciw"<C-r>""<Esc> 
+:map <C-p> ciw"<C-r>"
 
 "Repeat action on the next line on Ctrl+o
 :map <C-o> j.<Esc>
@@ -82,8 +82,9 @@ command E :exec Explorer()
 "Launch the edited file
 command XX :exec Run()
 
-"C++ launch
-command GG :exec ':! g++ tests-main.cpp -o test && ./test'
+"Run PJC tests
+command GG :exec PJCTest()
+command GGl :exec PJCTestLong()
 
 "Save as sudo
 command W :exec ':silent w !sudo tee % > /dev/null' | :edit!
@@ -115,6 +116,15 @@ endfunction
 "Run function
 function Run()
     :w
-    :!chmod +x %
-    :!./%
+    :!chmod +x %; ./%
+endfunction
+
+"PJC test function
+function PJCTest()
+    :w
+    :!g++ tests-main.cpp -o test-main -std=c++14 -Wreturn-type && ./test-main
+endfunction
+function PJCTestLong()
+    :w
+    :!g++ tests-main.cpp -o test-main -std=c++14 -Wreturn-type && ./test-main [.long]
 endfunction
