@@ -10,6 +10,9 @@ export EDITOR=$VISUAL
 
 ## ALIAS SECTION ##
 
+#Lisp
+alias lisp='sbcl'
+
 # General system aliases #
 alias o='
 read -p "Are you sure?(Y/n) " -n 1 -r
@@ -24,7 +27,7 @@ alias k='xmodmap -e "keycode 134 = Menu"'
 
 # Local PostgreSQL server #
 alias db='
-if [[ $(systemctl | grep postgres) ]]; then
+if [[ $(systemctl | grep -E "postgres.* +loaded +active +active.*") ]]; then
     read -p "PostgreSQL server running. Stop?(Y/n) " -n 1 -r
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]; then
@@ -37,6 +40,10 @@ else
 	sudo systemctl start postgresql.service
     fi
 fi'
+
+# Local Tomcat 8.5.8 #
+alias tomcat_start='/home/yan/Dropbox/studies/apache-tomcat-8.5.8/bin/startup.sh'
+alias tomcat_stop='/home/yan/Dropbox/studies/apache-tomcat-8.5.8/bin/shutdown.sh'
 
 # Touchpad on/off. Does not work in Wayland #
 alias t='synclient TouchpadOff=0'
