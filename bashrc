@@ -27,7 +27,7 @@ alias k='xmodmap -e "keycode 134 = Menu"'
 
 # Local PostgreSQL server #
 alias db='
-if [[ $(systemctl | grep -E "postgres.* +loaded +active +active.*") ]]; then
+if [[ $(systemctl | grep -E "postgres.* +loaded +active +running.*") ]]; then
     read -p "PostgreSQL server running. Stop?(Y/n) " -n 1 -r
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]; then
