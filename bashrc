@@ -10,9 +10,6 @@ export EDITOR=$VISUAL
 
 ## ALIAS SECTION ##
 
-#Lisp
-alias lisp='sbcl'
-
 # General system aliases #
 alias o='
 read -p "Are you sure?(Y/n) " -n 1 -r
@@ -80,7 +77,7 @@ alias pacaur='pacaur --color=auto --noedit --needed'
 alias g='pacaur -S '
 alias ug='sudo pacman -Rncs '
 alias u='pacaur -Syyuu '
-alias m='pacaur -Qdt '
+alias m='\pacaur -Qdt '
 alias l='pacman -Qe | grep'
 
 # Extraction script #
