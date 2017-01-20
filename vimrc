@@ -55,7 +55,8 @@ au BufEnter *.cpp compiler gcc
 :map <C-x> "+d
 
 "Paste from system clipboard on Ctrl+v
-:nmap <C-v> "+p
+:nmap <C-v> "+gp
+:imap <C-v> <Esc>"+gpa
 
 "Map Esc to ;; in Insert mode
 :imap ;; <Esc>
