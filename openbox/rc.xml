@@ -375,6 +375,11 @@
       <command>xfce4-popup-clipman</command>
     </action>
   </keybind>
+  <keybind key="W-F12">
+    <action name="Execute">
+	<command>~/git/unixStuff/sound.sh</command>
+    </action>
+  </keybind>
 </keyboard>
 <mouse>
   <dragThreshold>1</dragThreshold>
