@@ -7,8 +7,13 @@
 export VISUAL=vim
 export EDITOR=$VISUAL
 
-
 ## ALIAS SECTION ##
+
+alias tm='TERM=screen-256color-bce tmux'
+
+alias v='vim '
+
+alias dt='git difftool -y'
 
 # General system aliases #
 alias o='
