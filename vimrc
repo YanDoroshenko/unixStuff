@@ -8,7 +8,7 @@ if $TERM=="xterm"
     hi Normal ctermbg=235
     set background=dark
 endif
-
+set term=screen-256color
 "Case insensitive search by default
 set ignorecase 
 
