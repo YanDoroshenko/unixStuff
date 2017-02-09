@@ -9,13 +9,14 @@ export EDITOR=$VISUAL
 
 ## ALIAS SECTION ##
 
+# Run tmux with colors
 alias tm='TERM=screen-256color-bce tmux'
 
+# General system aliases #
 alias v='vim '
 
 alias dt='git difftool -y'
 
-# General system aliases #
 alias o='
 read -p "Are you sure?(Y/n) " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]; then
