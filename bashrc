@@ -82,7 +82,7 @@ alias pacaur='pacaur --color=auto --noedit --needed'
 alias g='pacaur -S '
 alias ug='sudo pacman -Rncs '
 alias u='pacaur -Syyuu '
-alias m='\pacaur -Qdt '
+alias m='\yaourt -Qdt '
 alias l='pacman -Qe | grep'
 
 # Extraction script #
