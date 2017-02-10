@@ -25,7 +25,7 @@ set hlsearch
 set number 
 
 "Tab produces shiftwidth spaces
-"set smarttab shiftwidth=4 
+set smarttab shiftwidth=4 
 
 "Load default config file (securely)
 set exrc secure 
