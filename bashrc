@@ -9,11 +9,17 @@ export EDITOR=$VISUAL
 
 ## ALIAS SECTION ##
 
+# VPN
+alias cs='systemctl stop openvpn-client@casablanca'
+alias dl='systemctl stop openvpn-client@datalite'
+
 # Run tmux with colors
 alias tm='TERM=screen-256color-bce tmux'
 
 # General system aliases #
 alias v='vim '
+
+alias lt='~/Documents/lighttable-0.8.1-linux/light'
 
 alias dt='git difftool -y'
 
@@ -79,11 +85,11 @@ alias vpn='sudo openconnect vpn.cleverlance.com'
 alias p='ping -c 3 google.com'
 
 # Package aliases #
-alias pacaur='pacaur --color=auto --noedit --needed'
-alias g='pacaur -S '
+alias yaourt='yaourt '
+alias g='yaourt -S '
 alias ug='sudo pacman -Rncs '
-alias u='pacaur -Syyuu '
-alias m='\yaourt -Qdt '
+alias u='yaourt -Syyuu --aur '
+alias m='yaourt -Qdt '
 alias l='pacman -Qe | grep'
 
 # Extraction script #
@@ -120,3 +126,4 @@ if [[ ${EUID} == 0 ]]; then
 else
     PS1='\[\e[1;32m\]\u\[\e[m\] \[\e[0;37m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] '
 fi
+
