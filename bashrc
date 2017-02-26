@@ -10,8 +10,8 @@ export EDITOR=$VISUAL
 ## ALIAS SECTION ##
 
 # VPN
-alias cs='systemctl stop openvpn-client@casablanca'
-alias dl='systemctl stop openvpn-client@datalite'
+alias cs='systemctl start openvpn-client@casablanca'
+alias dl='systemctl start openvpn-client@datalite'
 
 # Run tmux with colors
 alias tm='TERM=screen-256color-bce tmux'
@@ -85,11 +85,11 @@ alias vpn='sudo openconnect vpn.cleverlance.com'
 alias p='ping -c 3 google.com'
 
 # Package aliases #
-alias yaourt='yaourt '
-alias g='yaourt -S '
+alias y='yaourt '
+alias g='y-S '
 alias ug='sudo pacman -Rncs '
-alias u='yaourt -Syyuu --aur '
-alias m='yaourt -Qdt '
+alias u='y -Syyuu --aur '
+alias m='y -Qdt '
 alias l='pacman -Qe | grep'
 
 # Extraction script #
