@@ -1,5 +1,5 @@
 lxpanel &
-docky &
+plank &
 xcompmgr &
 nitrogen --restore &
 xfce4-clipman &
