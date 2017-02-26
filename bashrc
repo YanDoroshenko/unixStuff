@@ -86,7 +86,7 @@ alias p='ping -c 3 google.com'
 
 # Package aliases #
 alias y='yaourt '
-alias g='y-S '
+alias g='y -S '
 alias ug='sudo pacman -Rncs '
 alias u='y -Syyuu --aur '
 alias m='y -Qdt '
