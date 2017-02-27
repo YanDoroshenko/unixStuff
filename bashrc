@@ -32,7 +32,6 @@ else
 fi
 '
 alias sudo='sudo '
-alias k='xmodmap -e "keycode 134 = Menu"'
 
 # Local PostgreSQL server #
 alias db='
@@ -49,10 +48,6 @@ else
 	sudo systemctl start postgresql.service
     fi
 fi'
-
-# Local Tomcat 8.5.8 #
-alias tomcat_start='/home/yan/Dropbox/studies/apache-tomcat-8.5.8/bin/startup.sh'
-alias tomcat_stop='/home/yan/Dropbox/studies/apache-tomcat-8.5.8/bin/shutdown.sh'
 
 # Touchpad on/off. Does not work in Wayland #
 alias t='synclient TouchpadOff=0'
@@ -80,8 +75,7 @@ alias s='cd ~/Dropbox/studies'
 alias cp='cp -r'
 alias mkdir='mkdir -p'
 
-# Connection aliases #
-alias vpn='sudo openconnect vpn.cleverlance.com'
+# Network aliases #
 alias p='ping -c 3 google.com'
 
 # Package aliases #
@@ -115,7 +109,6 @@ x () {
 }
 
 # Convert pdf to jpg #
-
 function pdftojpg {
     bash /home/yan/git/unixStuff/pdftojpg.sh "$1";
 }
