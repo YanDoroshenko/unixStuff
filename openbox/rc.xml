@@ -335,7 +335,7 @@
         <command>sflock</command>
       </action>
     </keybind>
-    <keybind key="W-F1">
+    <keybind key="A-x">
       <action name="Execute">
         <command>albert show</command>
       </action>
