@@ -11,7 +11,9 @@ export EDITOR=$VISUAL
 
 # VPN
 alias cs='systemctl start openvpn-client@casablanca'
+alias ncs='systemctl stop openvpn-client@casablanca'
 alias dl='systemctl start openvpn-client@datalite'
+alias ndl='systemctl stop openvpn-client@datalite'
 
 # Run tmux with colors
 alias tm='TERM=screen-256color-bce tmux'
