@@ -4,7 +4,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-export VISUAL=vim
+export VISUAL=nvim
 export EDITOR=$VISUAL
 
 ## ALIAS SECTION ##
@@ -19,7 +19,7 @@ alias ndl='systemctl stop openvpn-client@datalite'
 alias tm='TERM=screen-256color-bce tmux'
 
 # General system aliases #
-alias v='vim '
+alias v='nvim '
 
 alias lt='~/Documents/lighttable-0.8.1-linux/light'
 
@@ -122,3 +122,5 @@ else
     PS1='\[\e[1;32m\]\u\[\e[m\] \[\e[0;37m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] '
 fi
 
+# Fix Pantheon terminal garbage outputo
+export PROMPT_COMMAND="echo -n "

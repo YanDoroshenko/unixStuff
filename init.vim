@@ -2,18 +2,10 @@
 syntax on 
 
 "Color scheme settings for virtual console
-if $TERM=="xterm" 
-	set t_Co=256
-	hi LineNr ctermfg=darkgrey
-	hi Normal ctermbg=235
-	set background=dark
-elseif $TERM=="screen"
-	set term=screen-256color
-	set t_Co=256
-	hi LineNr ctermfg=darkgrey
-	hi Normal ctermbg=235
-	set background=dark
-endif
+set t_Co=256
+hi LineNr ctermfg=darkgrey
+hi Normal ctermbg=235
+set background=dark
 
 "Case insensitive search by default
 set ignorecase 
@@ -102,35 +94,35 @@ command L :exec Latex()
 command Z :exec Zip()
 
 function Zip()
-	:w
-	:silent !zip %:r.zip %
-	:redraw!
+    :w
+    :silent !zip %:r.zip %
+    :redraw!
 endfunction
 
 "Function to build Latex files
 function Latex() 
-	:w           
-	:!pdflatex % 
+    :w           
+    :!pdflatex % 
 endfunction
 
 "Function to open file explorer in vertical split mode
 function Explorer() 
-	:30vsp          
-	:Explore       
+    :30vsp          
+    :Explore       
 endfunction
 
 "Run function
 function Run()
-	:w
-	:!chmod +x %; ./%
+    :w
+    :!chmod +x %; ./%
 endfunction
 
 "PJC test function
 function PJCTest()
-	:w
-	:!g++ tests-main.cpp -o test-main -std=c++14 -Wreturn-type && ./test-main
+    :w
+    :!g++ tests-main.cpp -o test-main -std=c++14 -Wreturn-type && ./test-main
 endfunction
 function PJCTestLong()
-	:w
-	:!g++ tests-main.cpp -o test-main -std=c++14 -Wreturn-type && ./test-main [.long]
+    :w
+    :!g++ tests-main.cpp -o test-main -std=c++14 -Wreturn-type && ./test-main [.long]
 endfunction
