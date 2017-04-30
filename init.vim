@@ -1,3 +1,6 @@
+"Use clipboard instead of registers
+set clipboard+=unnamedplus
+
 "Synax highlighting
 syntax on 
 
