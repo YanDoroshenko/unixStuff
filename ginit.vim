@@ -8,7 +8,7 @@ if exists("syntax_on")
     syntax reset
 endif
 
-hi Normal  guifg=#e0e2e4  guibg=#000f15
+hi Normal  guifg=#e0e2e4  guibg=#0a2429
 hi Comment guifg=#66747b   gui=italic
 hi Conditional guifg=#93c763 
 hi Constant guifg=#e0e2e4  
