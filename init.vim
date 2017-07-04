@@ -74,6 +74,14 @@ nmap <F6> :v/\S/d<Enter>:noh<Enter>
 
 map <F7> :%s/\n\{3,}/\r\r/e<Enter>
 
+"Reasonable regex handling
+nnoremap / /\v
+vnoremap / /\v
+cnoremap %s/ %smagic/
+cnoremap \>s/ \>smagic/
+nnoremap :g/ :g/\v
+nnoremap :g// :g//
+
 "Execute Explorer() function
 command E :exec Explorer() 
 
