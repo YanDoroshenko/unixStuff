@@ -64,6 +64,7 @@ alias pacman='pacman --color=always'
 alias dir='dir --color=always'
 alias la='ls -a --color=always'
 alias ll='ls -l --color=always'
+alias less='less -r'
 
 # FS aliases #
 alias ..='cd ..'
