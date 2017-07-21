@@ -9,12 +9,6 @@ export EDITOR=$VISUAL
 
 ## ALIAS SECTION ##
 
-# VPN
-alias cs='systemctl start openvpn-client@casablanca'
-alias ncs='systemctl stop openvpn-client@casablanca'
-alias dl='systemctl start openvpn-client@datalite'
-alias ndl='systemctl stop openvpn-client@datalite'
-
 # Run tmux with colors
 alias tm='TERM=screen-256color-bce tmux'
 
@@ -81,6 +75,12 @@ alias mkdir='mkdir -p'
 # Network aliases #
 alias p='ping -c 3 google.com'
 
+# VPN
+alias cs='systemctl start openvpn-client@casablanca'
+alias ncs='systemctl stop openvpn-client@casablanca'
+alias dl='systemctl start openvpn-client@datalite'
+alias ndl='systemctl stop openvpn-client@datalite'
+
 # Package aliases #
 alias y='yaourt '
 alias g='y -S '
@@ -122,6 +122,3 @@ if [[ ${EUID} == 0 ]]; then
 else
     PS1='\[\e[1;32m\]\u\[\e[m\] \[\e[0;37m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] '
 fi
-
-# Fix Pantheon terminal garbage outputo
-export PROMPT_COMMAND="echo -n "
