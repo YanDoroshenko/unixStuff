@@ -29,6 +29,8 @@ fi
 '
 alias sudo='sudo '
 
+alias sd='sudo $(fc -ln -1)'
+
 # Local PostgreSQL server #
 alias db='
 if [[ $(systemctl | grep -E "postgres.* +loaded +active +running.*") ]]; then
