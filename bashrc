@@ -125,3 +125,6 @@ if [[ ${EUID} == 0 ]]; then
 else
     PS1='\[\e[1;32m\]\u\[\e[m\] \[\e[0;37m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] '
 fi
+
+# Colorful terminal
+export TERM="xterm-256color"
