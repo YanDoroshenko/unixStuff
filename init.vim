@@ -25,6 +25,9 @@ set exrc secure
 "Files are not realoaded until external command
 set autoread 
 
+"More natural splitting
+set splitbelow
+
 "Indents and formats for makefiles
 au FileType make set noet ci pi sts=0 sw=4 ts=4 
 
