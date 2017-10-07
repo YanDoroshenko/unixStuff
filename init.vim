@@ -58,6 +58,9 @@ au BufEnter *.cpp compiler gcc
 "Map Esc to ;; in Insert mode
 :imap ;; <Esc>
 
+"Map Esc to ;; in Visual mode
+:vmap ;; <Esc>
+
 "Reformat the whole file on Ctrl+l
 :nmap <C-l> gg=G
 
