@@ -315,6 +315,17 @@
 	      <direction>down</direction>
 	  </action>
       </keybind>
+      <!-- Keybindings for brightness control -->
+      <keybind key="S-F6">
+	  <action name="Execute">
+	      <command>xbacklight -inc 1</command>
+	  </action>
+      </keybind>
+      <keybind key="S-F5">
+	  <action name="Execute">
+	      <command>xbacklight -dec 1</command>
+	  </action>
+      </keybind>
       <!-- Keybindings for running applications -->
       <keybind key="W-l">
 	  <action name="Execute">
