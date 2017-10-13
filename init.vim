@@ -155,3 +155,6 @@ vnoremap <silent> # :<C-U>
 
 " Powerline fonts for airline
 let g:airline_powerline_fonts = 1
+
+" Show all buffers in case of a single tab
+let g:airline#extensions#tabline#enabled = 1
