@@ -1,4 +1,5 @@
 "Synax highlighting
+
 syntax on 
 
 "Color scheme settings for virtual console
@@ -39,7 +40,6 @@ au BufEnter *.cpp compiler gcc
 
 :filetype plugin on
 
-
 "Surround the word with quotes on Ctrl+p
 :map <C-p> ciw"<C-r>"
 
@@ -70,15 +70,11 @@ au BufEnter *.cpp compiler gcc
 "Enter Insert mode on Space
 :nmap <Space> i
 
-"Add a closing tab
+"Add a closing tag
 :inoremap <F8> </<C-X><C-O>
 
-"Format XML on F5
-map <F5> :%s/<\([^>]\)*>/\r&\r/g<enter>:g/^$/d<enter>vat=gg=G<F6>gg:noh<Enter>
-
-nmap <F6> :v/\S/d<Enter>:noh<Enter>
-
-map <F7> :%s/\n\{3,}/\r\r/e<Enter>
+"Remove unnecessary empty lines
+map <F7> :%s/\n\{3,}/\r\r/e<Enter>:noh<Enter>
 
 "Reasonable regex handling
 nnoremap / /\v
@@ -88,15 +84,11 @@ cnoremap \>s/ \>smagic/
 nnoremap :g/ :g/\v
 nnoremap :g// :g//
 
-"Execute Explorer() function
-command E :exec Explorer() 
+"Run Explore vertically
+command E :exec Explore!
 
 "Launch the edited file
 command XX :exec Run()
-
-"Run PJC tests
-command GG :exec PJCTest()
-command GGl :exec PJCTestLong()
 
 "Save as sudo
 command W :exec ':silent w !sudo tee % > /dev/null' | :edit!
@@ -107,6 +99,7 @@ command L :exec Latex()
 "Zip the current file
 command Z :exec Zip()
 
+"Function that saves and compresses the current file
 function Zip()
     :w
     :silent !zip %:r.zip %
@@ -119,39 +112,23 @@ function Latex()
     :!pdflatex % 
 endfunction
 
-"Function to open file explorer in vertical split mode
-function Explorer() 
-    :30vsp          
-    :Explore       
-endfunction
-
 "Run function
 function Run()
     :w
     :!chmod +x %; ./%
 endfunction
 
-"PJC test function
-function PJCTest()
-    :w
-    :!g++ tests-main.cpp -o test-main -std=c++14 -Wreturn-type && ./test-main
-endfunction
-function PJCTestLong()
-    :w
-    :!g++ tests-main.cpp -o test-main -std=c++14 -Wreturn-type && ./test-main [.long]
-endfunction
-
 " Search for selected text, forwards or backwards.
 vnoremap <silent> * :<C-U>
-  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
-  \gvy/<C-R><C-R>=substitute(
-  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
-  \gV:call setreg('"', old_reg, old_regtype)<CR>
+	    \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+	    \gvy/<C-R><C-R>=substitute(
+	    \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+	    \gV:call setreg('"', old_reg, old_regtype)<CR>
 vnoremap <silent> # :<C-U>
-  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
-  \gvy?<C-R><C-R>=substitute(
-  \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
-  \gV:call setreg('"', old_reg, old_regtype)<CR>
+	    \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+	    \gvy?<C-R><C-R>=substitute(
+	    \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+	    \gV:call setreg('"', old_reg, old_regtype)<CR>
 
 " Powerline fonts for airline
 let g:airline_powerline_fonts = 1
