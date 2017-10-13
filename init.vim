@@ -1,6 +1,5 @@
 "Synax highlighting
-
-syntax on 
+syntax on
 
 "Color scheme settings for virtual console
 set t_Co=256
@@ -9,34 +8,34 @@ hi Normal ctermbg=235
 set background=dark
 
 "Case insensitive search by default
-set ignorecase 
+set ignorecase
 
 "Highlight all search matches
-set hlsearch 
+set hlsearch
 
 "Show line numbers
-set number 
+set number
 
 "Tab produces shiftwidth spaces
-set smarttab shiftwidth=4 
+set smarttab shiftwidth=4
 
 "Load default config file (securely)
-set exrc secure 
+set exrc secure
 
 "Files are not realoaded until external command
-set autoread 
+set autoread
 
 "More natural splitting
 set splitbelow
 
 "Indents and formats for makefiles
-au FileType make set noet ci pi sts=0 sw=4 ts=4 
+au FileType make set noet ci pi sts=0 sw=4 ts=4
 
 "GCC integration
 au BufEnter *.cpp compiler gcc
 
 "Enable plugins for file types (.c, .java, .python, Makefile, etc.) and indent files accordingly
-:filetype plugin indent on 
+:filetype plugin indent on
 
 :filetype plugin on
 
@@ -94,7 +93,7 @@ command XX :exec Run()
 command W :exec ':silent w !sudo tee % > /dev/null' | :edit!
 
 "Execute Latex() function
-command L :exec Latex() 
+command L :exec Latex()
 
 "Zip the current file
 command Z :exec Zip()
@@ -107,9 +106,9 @@ function Zip()
 endfunction
 
 "Function to build Latex files
-function Latex() 
-    :w           
-    :!pdflatex % 
+function Latex()
+    :w
+    :!pdflatex %
 endfunction
 
 "Run function
@@ -120,15 +119,15 @@ endfunction
 
 " Search for selected text, forwards or backwards.
 vnoremap <silent> * :<C-U>
-	    \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
-	    \gvy/<C-R><C-R>=substitute(
-	    \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
-	    \gV:call setreg('"', old_reg, old_regtype)<CR>
+    \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+    \gvy/<C-R><C-R>=substitute(
+    \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+    \gV:call setreg('"', old_reg, old_regtype)<CR>
 vnoremap <silent> # :<C-U>
-	    \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
-	    \gvy?<C-R><C-R>=substitute(
-	    \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
-	    \gV:call setreg('"', old_reg, old_regtype)<CR>
+    \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+    \gvy?<C-R><C-R>=substitute(
+    \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+    \gV:call setreg('"', old_reg, old_regtype)<CR>
 
 " Powerline fonts for airline
 let g:airline_powerline_fonts = 1
