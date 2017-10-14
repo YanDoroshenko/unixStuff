@@ -41,8 +41,11 @@ filetype plugin on
 " Surround the word with quotes on Ctrl+p
 noremap <C-p> dwi"<Esc>pi"<Esc>
 
+" Surround the word with quotes on Ctrl+p
+vnoremap <C-p> d'<'>i"<Esc>gpa"<Esc>
+
 " Repeat action on the next line on Ctrl+o
-noremap <C-o> j.<Esc>
+noremap <C-o> j0.<Esc>
 
 " Select everything on Ctrl+a
 noremap <C-a> ggvG$
