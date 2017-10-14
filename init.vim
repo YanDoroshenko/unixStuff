@@ -35,41 +35,41 @@ au FileType make set noet ci pi sts=0 sw=4 ts=4
 au BufEnter *.cpp compiler gcc
 
 " Enable plugins for file types (.c, .java, .python, Makefile, etc.) and indent files accordingly
-:filetype plugin indent on
-:filetype plugin on
+filetype plugin indent on
+filetype plugin on
 
 " Surround the word with quotes on Ctrl+p
-:map <C-p> ciw"<C-r>"
+noremap <C-p> dwi"<Esc>pi"<Esc>
 
 " Repeat action on the next line on Ctrl+o
-:map <C-o> j.<Esc>
+noremap <C-o> j.<Esc>
 
 " Select everything on Ctrl+a
-:map <C-a> ggvG$
+noremap <C-a> ggvG$
 
 " Copy to system clipboard on Ctrl+c
-:map <C-c> +y
+noremap <C-c> "+y
 
 " Cut to system clipboard on Ctrl+x
-:map <C-x> +d
+noremap <C-x> "+d
 
 " Paste from system clipboard on Ctrl+v
-:imap <C-v> <Esc>"+gpa
+inoremap <C-v> <Esc>"+gpa
 
-" Map Esc to ;; in Insert mode
-:imap ;; <Esc>
+" Map Esc to ;; in insert mode
+inoremap ;; <Esc>
 
-" Map Esc to ;; in Visual mode
-:vmap ;; <Esc>
+" Map Esc to ;; in visual mode
+vnoremap ;; <Esc>
 
 " Reformat the whole file on Ctrl+l
-:nmap <C-l> gg=G
+nnoremap <C-l> gg=G
 
 " Enter Insert mode on Space
-:nmap <Space> i
+nnoremap <Space> i
 
 " Add a closing tag
-:inoremap <F8> </<C-X><C-O>
+inoremap <F8> </<C-X><C-O>
 
 " Remove unnecessary empty lines
 map <F7> :%s/\n\{3,}/\r\r/e<Enter>:noh<Enter>
