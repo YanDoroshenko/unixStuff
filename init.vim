@@ -39,12 +39,6 @@ au BufEnter *.cpp compiler gcc
 filetype plugin indent on
 filetype plugin on
 
-" Surround the word with quotes on Ctrl+p
-noremap <C-p> dwi"<Esc>pi"<Esc>
-
-" Surround the word with quotes on Ctrl+p
-vnoremap <C-p> d'<'>i"<Esc>gpa"<Esc>
-
 " Repeat action on the next line on Ctrl+o
 noremap <C-o> j0.<Esc>
 
@@ -141,6 +135,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-dispatch'
 Plug 'radenling/vim-dispatch-neovim'
+Plug 'tpope/vim-surround'
 call plug#end()
 
 " git -add --patch current file with Gpatch
