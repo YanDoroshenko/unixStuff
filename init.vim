@@ -143,6 +143,9 @@ Plug 'tpope/vim-dispatch'
 Plug 'radenling/vim-dispatch-neovim'
 call plug#end()
 
+" git -add --patch current file with Gpatch
+command Gpatch w | Git add --patch %
+
 " Powerline fonts for airline
 let g:airline_powerline_fonts = 1
 
