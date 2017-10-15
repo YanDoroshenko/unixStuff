@@ -60,10 +60,12 @@ noremap <C-x> "+d
 " Paste from system clipboard on Ctrl+v
 inoremap <C-v> <Esc>"+gpa
 
-" Map Esc to ;; in insert mode
+" Remap Esc to ;; in normal mode
+noremap <Esc> <NOP>
+inoremap <Esc> <NOP>
+vnoremap <Esc> <NOP>
+noremap ;; <Esc>
 inoremap ;; <Esc>
-
-" Map Esc to ;; in visual mode
 vnoremap ;; <Esc>
 
 " Reformat the whole file on Ctrl+l
