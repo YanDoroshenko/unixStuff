@@ -1,3 +1,5 @@
+" Navigation and display {{{
+
 " Synax highlighting
 syntax on
 
@@ -29,6 +31,44 @@ set autoread
 set splitbelow
 set splitright
 
+" Remap $ to match the end of the line, not the beginning of the next
+noremap $ g_
+vnoremap $ g_
+
+" Remap Esc to ;; {{{
+noremap <Esc> <NOP>
+inoremap <Esc> <NOP>
+vnoremap <Esc> <NOP>
+noremap ;; <Esc>
+inoremap ;; <Esc>
+vnoremap ;; <Esc>
+" }}}
+
+" Enter Insert mode on Space
+nnoremap <Space> i
+
+" }}}
+
+" Handy mappings {{{
+
+" Reformat the whole file on Ctrl+l
+nnoremap <C-l> gg=G
+
+" Repeat action on the next line on Ctrl+o
+noremap <C-o> j0.<Esc>
+
+" Add a closing tag
+inoremap <F8> </<C-X><C-O>
+
+" Remove unnecessary empty lines
+map <F7> :%s/\n\{3,}/\r\r/e<Enter>:noh<Enter>
+" }}}
+
+" Filetypes {{{
+
+" Folding in Vim config
+au FileType vim setlocal foldmethod=marker
+
 " Indents and formats for makefiles
 au FileType make set noet ci pi sts=0 sw=4 ts=4
 
@@ -39,8 +79,9 @@ au BufEnter *.cpp compiler gcc
 filetype plugin indent on
 filetype plugin on
 
-" Repeat action on the next line on Ctrl+o
-noremap <C-o> j0.<Esc>
+" }}}
+
+" Clipboard {{{
 
 " Select everything on Ctrl+a
 noremap <C-a> ggvG$
@@ -53,53 +94,9 @@ noremap <C-x> "+d
 
 " Paste from system clipboard on Ctrl+v
 inoremap <C-v> <Esc>"+gpa
+" }}}
 
-" Remap Esc to ;;
-noremap <Esc> <NOP>
-inoremap <Esc> <NOP>
-vnoremap <Esc> <NOP>
-noremap ;; <Esc>
-inoremap ;; <Esc>
-vnoremap ;; <Esc>
-
-" Remap $ to match the end of the line, not the beginning of the next
-noremap $ g_
-vnoremap $ g_
-
-" Reformat the whole file on Ctrl+l
-nnoremap <C-l> gg=G
-
-" Enter Insert mode on Space
-nnoremap <Space> i
-
-" Add a closing tag
-inoremap <F8> </<C-X><C-O>
-
-" Remove unnecessary empty lines
-map <F7> :%s/\n\{3,}/\r\r/e<Enter>:noh<Enter>
-
-" Reasonable regex handling
-nnoremap / /\v
-vnoremap / /\v
-cnoremap %s/ %smagic/
-cnoremap \>s/ \>smagic/
-nnoremap :g/ :g/\v
-nnoremap :g// :g//
-
-" Run Explore vertically
-command E :exec Explore!
-
-" Launch the edited file
-command XX :exec Run()
-
-" Save as sudo
-command W :exec ':silent w !sudo tee % > /dev/null' | :edit!
-
-" Execute Latex() function
-command L :exec Latex()
-
-" Zip the current file
-command Z :exec Zip()
+" Functions {{{
 
 " Function that saves and compresses the current file
 function Zip()
@@ -119,6 +116,17 @@ function Run()
     :w
     :!chmod +x %; ./%
 endfunction
+" }}}
+
+" Search {{{
+
+" Reasonable regex handling
+nnoremap / /\v
+vnoremap / /\v
+cnoremap %s/ %smagic/
+cnoremap \>s/ \>smagic/
+nnoremap :g/ :g/\v
+nnoremap :g// :g//
 
 " Search for selected text, forwards or backwards.
 vnoremap <silent> * :<C-U>
@@ -131,8 +139,9 @@ vnoremap <silent> # :<C-U>
     \gvy?<C-R><C-R>=substitute(
     \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
     \gV:call setreg('"', old_reg, old_regtype)<CR>
+" }}}
 
-" Plugins
+" Plugins {{{
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -141,12 +150,33 @@ Plug 'tpope/vim-dispatch'
 Plug 'radenling/vim-dispatch-neovim'
 Plug 'tpope/vim-surround'
 call plug#end()
+" }}}
 
+" Commands {{{
+
+" Run Explore vertically
+command E :exec Explore!
+
+" Launch the edited file
+command XX :exec Run()
+
+" Save as sudo
+command W :exec ':silent w !sudo tee % > /dev/null' | :edit!
+
+" Execute Latex() function
+command L :exec Latex()
+
+" Zip the current file
+command Z :exec Zip()
 " git -add --patch current file with Gpatch
 command Gpatch w | Git add --patch %
+" }}}
+
+" Plugin configuration {{{
 
 " Powerline fonts for airline
 let g:airline_powerline_fonts = 1
 
 " Show all buffers in case of a single tab
 let g:airline#extensions#tabline#enabled = 1
+" }}}
