@@ -62,6 +62,10 @@ noremap ;; <Esc>
 inoremap ;; <Esc>
 vnoremap ;; <Esc>
 
+" Remap $ to match the end of the line, not the beginning of the next
+noremap $ g_
+vnoremap $ g_
+
 " Reformat the whole file on Ctrl+l
 nnoremap <C-l> gg=G
 
