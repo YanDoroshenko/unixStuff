@@ -54,7 +54,7 @@ noremap <C-x> "+d
 " Paste from system clipboard on Ctrl+v
 inoremap <C-v> <Esc>"+gpa
 
-" Remap Esc to ;; in normal mode
+" Remap Esc to ;;
 noremap <Esc> <NOP>
 inoremap <Esc> <NOP>
 vnoremap <Esc> <NOP>
