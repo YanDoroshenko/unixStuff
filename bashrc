@@ -9,9 +9,6 @@ export EDITOR=$VISUAL
 
 ## ALIAS SECTION ##
 
-# Run tmux with colors
-alias tm='TERM=screen-256color-bce tmux'
-
 # General system aliases #
 alias v='nvim '
 
