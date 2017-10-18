@@ -55,7 +55,7 @@ nnoremap <Space> i
 nnoremap <C-l> gg=G
 
 " Repeat action on the next line on Ctrl+o
-noremap <C-o> j0.<Esc>
+noremap <C-o> @='j0.'<Esc>
 
 " Add a closing tag
 inoremap <F8> </<C-X><C-O>
