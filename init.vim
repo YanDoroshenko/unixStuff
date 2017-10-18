@@ -125,8 +125,6 @@ nnoremap / /\v
 vnoremap / /\v
 cnoremap %s/ %smagic/
 cnoremap \>s/ \>smagic/
-nnoremap :g/ :g/\v
-nnoremap :g// :g//
 
 " Search for selected text, forwards or backwards.
 vnoremap <silent> * :<C-U>
