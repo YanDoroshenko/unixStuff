@@ -168,6 +168,7 @@ command L :exec Latex()
 
 " Zip the current file
 command Z :exec Zip()
+
 " git -add --patch current file with Gpatch
 command Gpatch w | Git add --patch %
 " }}}
