@@ -19,8 +19,6 @@ else
     alias t='tmux'
 fi
 
-alias lt='~/Documents/lighttable-0.8.1-linux/light'
-
 alias dt='git difftool -y'
 
 alias o='
@@ -34,26 +32,6 @@ fi
 alias sudo='sudo '
 
 alias sd='sudo $(fc -ln -1)'
-
-# Local PostgreSQL server #
-alias db='
-if [[ $(systemctl | grep -E "postgres.* +loaded +active +running.*") ]]; then
-    read -p "PostgreSQL server running. Stop?(Y/n) " -n 1 -r
-    echo
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
-	sudo systemctl stop postgresql.service
-    fi
-else
-    read -p "PostgreSQL server not running. Start?(Y/n) " -n 1 -r
-    echo
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
-	sudo systemctl start postgresql.service
-    fi
-fi'
-
-# Touchpad on/off. Does not work in Wayland #
-alias t='synclient TouchpadOff=0'
-alias nt='synclient TouchpadOff=1'
 
 # Coloring output #
 alias ls='ls --color=always'
