@@ -12,6 +12,13 @@ export EDITOR=$VISUAL
 # General system aliases #
 alias v='nvim '
 
+# Tmux with correct colors
+if [[ $TERM =~ ^xterm.*$ ]]; then
+    alias t='tmux -2'
+else
+    alias t='tmux'
+fi
+
 alias lt='~/Documents/lighttable-0.8.1-linux/light'
 
 alias dt='git difftool -y'
@@ -122,6 +129,3 @@ if [[ ${EUID} == 0 ]]; then
 else
     PS1='\[\e[1;32m\]\u\[\e[m\] \[\e[0;37m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] '
 fi
-
-# Colorful terminal
-export TERM="xterm-256color"

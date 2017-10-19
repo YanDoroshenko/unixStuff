@@ -178,4 +178,10 @@ let g:airline_powerline_fonts = 1
 
 " Show all buffers in case of a single tab
 let g:airline#extensions#tabline#enabled = 1
+
+"Airline theme configuration
+let TERM = split(system("echo $TERM"), '[^a-z]')[0]
+if TERM ==# "linux"
+    let g:airline_theme = "base16"
+endif
 " }}}
