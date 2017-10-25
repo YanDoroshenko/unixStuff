@@ -67,13 +67,13 @@ map <F7> :%s/\n\{3,}/\r\r/e<Enter>:noh<Enter>
 " Filetypes {{{
 
 " Folding in Vim config
-au FileType vim setlocal foldmethod=marker
+autocmd FileType vim setlocal foldmethod=marker
 
 " Indents and formats for makefiles
-au FileType make set noet ci pi sts=0 sw=4 ts=4
+autocmd FileType make set noet ci pi sts=0 sw=4 ts=4
 
 " GCC integration
-au BufEnter *.cpp compiler gcc
+autocmd BufEnter *.cpp compiler gcc
 
 " Enable plugins for file types (.c, .java, .python, Makefile, etc.) and indent files accordingly
 filetype plugin indent on
