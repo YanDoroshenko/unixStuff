@@ -161,8 +161,11 @@ command XX :exec Run()
 " Save as sudo
 command W :exec ':silent w !sudo tee % > /dev/null' | :edit!
 
-" Execute Latex() function
-command L :exec Latex()
+" Build TeX file
+autocmd FileType tex command L :exec Latex()
+
+" Build java file
+autocmd FileType java command! J execute "w |! javac %"
 
 " Zip the current file
 command Z :exec Zip()
