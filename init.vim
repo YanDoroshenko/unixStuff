@@ -153,7 +153,7 @@ call plug#end()
 " Commands {{{
 
 " Run Explore vertically
-command E :exec Explore!
+command E execute "40vsp | Explore | normal! <C-w>r"
 
 " Launch the edited file
 command XX :exec Run()
