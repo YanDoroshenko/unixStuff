@@ -162,7 +162,7 @@ command XX :exec Run()
 command W :exec ':silent w !sudo tee % > /dev/null' | :edit!
 
 " Build TeX file
-autocmd FileType tex command! L :exec Latex()
+autocmd FileType tex command! L execute "normal! mz | :exec Latex()\<cr> | `z"
 
 " Build java file
 autocmd FileType java command! J execute "w |! javac %"
