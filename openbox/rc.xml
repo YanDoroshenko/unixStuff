@@ -316,12 +316,12 @@
 	  </action>
       </keybind>
       <!-- Keybindings for brightness control -->
-      <keybind key="S-F6">
+      <keybind key="W-F6">
 	  <action name="Execute">
 	      <command>xbacklight -inc 1</command>
 	  </action>
       </keybind>
-      <keybind key="S-F5">
+      <keybind key="W-F5">
 	  <action name="Execute">
 	      <command>xbacklight -dec 1</command>
 	  </action>
