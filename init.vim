@@ -31,6 +31,9 @@ set autoread
 set splitbelow
 set splitright
 
+" Ignore unsaved buffer warning when switching between buffers
+set hidden
+
 " Remap $ to match the end of the line, not the beginning of the next
 noremap $ g_
 vnoremap $ g_
