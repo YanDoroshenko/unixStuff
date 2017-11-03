@@ -177,8 +177,8 @@ autocmd FileType java command! J execute "w |! javac %"
 " Zip the current file
 command Z :exec Zip()
 
-" git -add --patch current file with Gpatch
-command Gpatch w | Git add --patch %
+" git add --patch current file with Gpatch
+autocmd BufReadPost * if fugitive#extract_git_dir(expand("%:p")) !=# "" | execute "command! Gpatch w | Git add --patch %" | endif
 " }}}
 
 " Plugin configuration {{{
