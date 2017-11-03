@@ -128,6 +128,8 @@ endfunction
 " Reasonable regex handling
 nnoremap / /\v
 vnoremap / /\v
+nnoremap ? ?\v
+vnoremap ? ?\v
 cnoremap %s/ %smagic/
 cnoremap \>s/ \>smagic/
 
