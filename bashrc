@@ -12,9 +12,12 @@ export EDITOR=$VISUAL
 # General system aliases #
 alias v='nvim '
 
-# Tmux with correct colors
 if [[ $TERM =~ ^xterm.*$ ]]; then
+    # Tmux with correct colors
     alias t='tmux -2'
+
+    # Old VTE_VERSION for guake to correctly work with Neovim
+    export VTE_VERSION=0282
 else
     alias t='tmux'
 fi
