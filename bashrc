@@ -17,7 +17,6 @@ if [[ $TERM =~ ^xterm.*$ ]]; then
     alias t='tmux -2'
 
     # Old VTE_VERSION for guake to correctly work with Neovim
-    export VTE_VERSION=0282
 else
     alias t='tmux'
 fi

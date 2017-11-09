@@ -4,6 +4,7 @@
 syntax on
 
 " Color scheme settings for virtual console
+set guicursor=
 set t_Co=256
 hi LineNr ctermfg=darkgrey
 hi Normal ctermbg=235
