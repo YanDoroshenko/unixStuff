@@ -58,7 +58,7 @@ nnoremap <Space> i
 " Handy mappings {{{
 
 " Reformat the whole file on Ctrl+l
-nnoremap <C-l> gg=G
+nnoremap <C-l> mzgg=G`z
 
 " Repeat action on the next line on Ctrl+o
 noremap <C-o> @='j0.'<Esc>
