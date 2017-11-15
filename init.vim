@@ -70,7 +70,7 @@ inoremap <F8> </<C-X><C-O>
 map <F7> :%s/\n\{3,}/\r\r/e<Enter>:noh<Enter>
 " }}}
 
-" Filetypes {{{
+" Autocommands {{{
 
 " Folding in Vim config
 autocmd FileType vim setlocal foldmethod=marker
@@ -81,9 +81,14 @@ autocmd FileType make set noet ci pi sts=0 sw=4 ts=4
 " GCC integration
 autocmd BufEnter *.cpp compiler gcc
 
-" Enable plugins for file types (.c, .java, .python, Makefile, etc.) and indent files accordingly
-filetype plugin indent on
-filetype plugin on
+" Build TeX file
+autocmd FileType tex command! L execute "normal! mz | :exec Latex()\<cr> | `z"
+
+" Build java file
+autocmd FileType java command! J execute "w |! javac %"
+
+" git add --patch current file with Gpatch
+autocmd BufReadPost * if fugitive#extract_git_dir(expand("%:p")) !=# "" | execute "command! Gpatch w | Git add --patch %" | endif
 
 " }}}
 
@@ -136,18 +141,24 @@ cnoremap \>s/ \>smagic/
 
 " Search for selected text, forwards or backwards.
 vnoremap <silent> * :<C-U>
-    \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
-    \gvy/<C-R><C-R>=substitute(
-    \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
-    \gV:call setreg('"', old_reg, old_regtype)<CR>
+            \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+            \gvy/<C-R><C-R>=substitute(
+            \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+            \gV:call setreg('"', old_reg, old_regtype)<CR>
 vnoremap <silent> # :<C-U>
-    \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
-    \gvy?<C-R><C-R>=substitute(
-    \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
-    \gV:call setreg('"', old_reg, old_regtype)<CR>
+            \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+            \gvy?<C-R><C-R>=substitute(
+            \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+            \gV:call setreg('"', old_reg, old_regtype)<CR>
 " }}}
 
 " Plugins {{{
+"
+" Enable plugins for file types (.c, .java, .python, Makefile, etc.) and indent files accordingly
+filetype plugin indent on
+filetype plugin on
+
+" Plug plugins
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -169,17 +180,8 @@ command XX :exec Run()
 " Save as sudo
 command W :exec ':silent w !sudo tee % > /dev/null' | :edit!
 
-" Build TeX file
-autocmd FileType tex command! L execute "normal! mz | :exec Latex()\<cr> | `z"
-
-" Build java file
-autocmd FileType java command! J execute "w |! javac %"
-
 " Zip the current file
 command Z :exec Zip()
-
-" git add --patch current file with Gpatch
-autocmd BufReadPost * if fugitive#extract_git_dir(expand("%:p")) !=# "" | execute "command! Gpatch w | Git add --patch %" | endif
 " }}}
 
 " Plugin configuration {{{
