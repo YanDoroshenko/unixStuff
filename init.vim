@@ -90,6 +90,8 @@ autocmd FileType java command! J execute "w |! javac %"
 " git add --patch current file with Gpatch
 autocmd BufReadPost * if fugitive#extract_git_dir(expand("%:p")) !=# "" | execute "command! Gpatch w | Git add --patch %" | endif
 
+" Remove trailing whitespaces before save
+autocmd BufWritePre * :silent! %smagic/\v +$//g
 " }}}
 
 " Clipboard {{{
