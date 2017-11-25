@@ -91,7 +91,7 @@ autocmd FileType java command! J execute "w |! javac %"
 autocmd BufReadPost * if fugitive#extract_git_dir(expand("%:p")) !=# "" | execute "command! Gpatch w | Git add --patch %" | endif
 
 " Remove trailing whitespaces before save
-autocmd BufWritePre * :silent! %smagic/\v +$//g
+autocmd BufWritePre * :silent! %smagic/\v[ \t]+$//g
 " }}}
 
 " Clipboard {{{
