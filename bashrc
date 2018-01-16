@@ -13,7 +13,7 @@ export EDITOR=$VISUAL
 alias v='nvim '
 alias lisp='rlwrap sbcl'
 
-    # Tmux with correct colors
+# Tmux with correct colors
 if [[ $TERM =~ ^xterm.*$ ]]; then
     alias t='tmux -2'
 else
