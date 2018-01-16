@@ -1,8 +1,8 @@
 lxpanel &
-plank &
 xcompmgr &
 nitrogen --restore &
 xfce4-clipman &
+plank &
 albert &
 
 xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
@@ -11,3 +11,12 @@ xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Accel Speed" 0.6
 xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Middle Emulation Enabled" 1
 
 xset r rate 250 30
+
+HDMI=$(xrandr | grep mm | grep HDMI)
+VGA=$(xrandr | grep mm | grep VGA)
+if [ "$HDMI" ]; then
+    ~/.screenlayout/hdmi-fullhd-right.sh
+fi
+if [ "$VGA" ]; then
+    ~/.screenlayout/vga-fullhd-right.sh
+fi
