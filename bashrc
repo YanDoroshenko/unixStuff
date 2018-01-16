@@ -11,6 +11,7 @@ export EDITOR=$VISUAL
 
 # General system aliases #
 alias v='nvim '
+alias lisp='rlwrap sbcl'
 
     # Tmux with correct colors
 if [[ $TERM =~ ^xterm.*$ ]]; then
