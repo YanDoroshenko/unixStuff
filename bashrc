@@ -73,7 +73,7 @@ alias g='y -S '
 alias ug='y -Rncs '
 alias u='y -Syyuu --aur '
 alias m='y -Qdt '
-alias l='pacman -Qe | grep'
+alias l='pacman -Q | grep'
 
 # Extraction script #
 x () {
