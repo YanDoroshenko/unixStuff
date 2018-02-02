@@ -12,8 +12,8 @@ xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Middle Emulation Enabled"
 
 xset r rate 250 30
 
-HDMI=$(xrandr | grep mm | grep HDMI)
-VGA=$(xrandr | grep mm | grep VGA)
+HDMI=$(xrandr | grep mm | grep "HDMI[0-9] connected")
+VGA=$(xrandr | grep mm | grep "DP[0-9] connected")
 if [ "$HDMI" ]; then
     ~/.screenlayout/hdmi-fullhd-right.sh
 fi
