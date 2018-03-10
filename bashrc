@@ -12,6 +12,8 @@ export EDITOR=$VISUAL
 # General system aliases #
 alias v='nvim '
 alias lisp='rlwrap sbcl'
+alias kf='sudo zkServer.sh start && sleep 5 && sudo kafka-server-start.sh /usr/share/kafka/config/server.properties'
+alias nzk='sudo zkServer.sh stop &&'
 
 # Tmux with correct colors
 if [[ $TERM =~ ^xterm.*$ ]]; then
