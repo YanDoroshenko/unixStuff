@@ -36,6 +36,8 @@ alias sudo='sudo '
 
 alias sd='sudo $(fc -ln -1)'
 
+alias wr='curl wttr.in/Prague'
+
 # Coloring output #
 alias ls='ls --color=always'
 alias dmesg='dmesg --color=always'
