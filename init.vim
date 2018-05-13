@@ -129,6 +129,11 @@ function! Run()
     :w
     :!chmod +x %; ./%
 endfunction
+
+" Git add function
+function! GitAdd(file)
+    :exec join([':!git add', a:file], " ")
+endfunction
 " }}}
 
 " Search {{{
@@ -186,7 +191,7 @@ command! W :exec ':silent w !sudo tee % > /dev/null' | :edit!
 command! Z :exec Zip()
 
 " Add an argument file to git
-command! Gadd -nargs=1 MyCommand call s:GitAdd(<f-args>)
+command! -nargs=1 -complete=file Ga call GitAdd(<f-args>)
 " }}}
 
 " Plugin configuration {{{
