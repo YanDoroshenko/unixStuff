@@ -112,20 +112,20 @@ inoremap <C-v> <Esc>"+gpa
 " Functions {{{
 
 " Function that saves and compresses the current file
-function Zip()
+function! Zip()
     :w
     :silent !zip %:r.zip %
     :redraw!
 endfunction
 
 " Function to build Latex files
-function Latex()
+function! Latex()
     :w
     :!pdflatex %
 endfunction
 
 " Run function
-function Run()
+function! Run()
     :w
     :!chmod +x %; ./%
 endfunction
@@ -184,6 +184,9 @@ command! W :exec ':silent w !sudo tee % > /dev/null' | :edit!
 
 " Zip the current file
 command! Z :exec Zip()
+
+" Add an argument file to git
+command! Gadd -nargs=1 MyCommand call s:GitAdd(<f-args>)
 " }}}
 
 " Plugin configuration {{{
