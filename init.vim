@@ -47,6 +47,7 @@ vnoremap <Esc> <NOP>
 noremap ;; <Esc>
 inoremap ;; <Esc>
 vnoremap ;; <Esc>
+tnoremap ;; <C-\><C-N>
 " }}}
 
 " Enter Insert mode on Space
@@ -173,16 +174,16 @@ call plug#end()
 " Commands {{{
 
 " Run Explore vertically
-command E execute "40vsp | Explore | normal! <C-w>r"
+command! E execute "40vsp | Explore | normal! <C-w>r"
 
 " Launch the edited file
-command XX :exec Run()
+command! XX :exec Run()
 
 " Save as sudo
-command W :exec ':silent w !sudo tee % > /dev/null' | :edit!
+command! W :exec ':silent w !sudo tee % > /dev/null' | :edit!
 
 " Zip the current file
-command Z :exec Zip()
+command! Z :exec Zip()
 " }}}
 
 " Plugin configuration {{{
