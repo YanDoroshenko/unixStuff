@@ -143,8 +143,8 @@ nnoremap / /\v
 vnoremap / /\v
 nnoremap ? ?\v
 vnoremap ? ?\v
-cnoremap %s/ %smagic/
-cnoremap \>s/ \>smagic/
+cnoremap %s/ %smagic/\v
+cnoremap \>s/ \>smagic/\v
 
 " Search for selected text, forwards or backwards.
 vnoremap <silent> * :<C-U>
