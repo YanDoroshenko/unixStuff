@@ -5,6 +5,9 @@ syntax on
 
 " Color scheme settings for virtual console
 set t_Co=256
+set cursorline
+hi CursorLineNR ctermfg=white
+hi CursorLine cterm=none
 hi LineNr ctermfg=darkgrey
 hi Normal ctermbg=235
 set background=dark
