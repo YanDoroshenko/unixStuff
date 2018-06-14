@@ -39,15 +39,15 @@ alias sd='sudo $(fc -ln -1)'
 alias wr='curl wttr.in/Prague'
 
 # Coloring output #
-alias ls='ls --color=always'
-alias dmesg='dmesg --color=always'
-alias grep='grep --color=always'
-alias egrep='egrep --color=always'
-alias gcc='gcc -fdiagnostics-color=always'
-alias pacman='pacman --color=always'
-alias dir='dir --color=always'
-alias la='ls -a --color=always'
-alias ll='ls -l --color=always'
+alias ls='ls --color=auto'
+alias dmesg='dmesg --color=auto'
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias gcc='gcc -fdiagnostics-color=auto'
+alias pacman='pacman --color=auto'
+alias dir='dir --color=auto'
+alias la='ls -a --color=auto'
+alias ll='ls -l --color=auto'
 alias less='less -r'
 
 # FS aliases #
@@ -116,4 +116,3 @@ fi
 
 # Fix bash-completion
 [ -r /usr/share/bash-completion/bash_completion   ] && . /usr/share/bash-completion/bash_completion
-
