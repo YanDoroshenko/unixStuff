@@ -192,6 +192,9 @@ command! Z :exec Zip()
 
 " Add an argument file to git
 command! -nargs=1 -complete=file Ga call GitAdd(<f-args>)
+
+" Git add --patch
+autocmd BufReadPost * if fugitive#extract_git_dir(expand("%:p")) !=# "" | execute "command! Gpatch w | Git add --patch %" | endif
 " }}}
 
 " Plugin configuration {{{
