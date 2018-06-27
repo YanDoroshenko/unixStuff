@@ -72,10 +72,10 @@ alias dl='systemctl start openvpn-client@datalite'
 alias ndl='systemctl stop openvpn-client@datalite'
 
 # Package aliases #
-alias y='yaourt '
+alias y='pakku --color=always '
 alias g='y -S '
 alias ug='y -Rncs '
-alias u='y -Syyuu --aur '
+alias u='y -Syyuu '
 alias m='y -Qdt '
 alias l='pacman -Q | grep'
 
