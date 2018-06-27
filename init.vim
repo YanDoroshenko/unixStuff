@@ -99,9 +99,6 @@ autocmd BufWritePre * :silent! %smagic/\v[ \t]+$//g
 
 " Clipboard {{{
 
-" Select everything on Ctrl+a
-noremap <C-a> ggvG$
-
 " Copy to system clipboard on Ctrl+c
 noremap <C-c> "+y
 
