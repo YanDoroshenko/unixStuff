@@ -167,6 +167,7 @@ filetype plugin on
 
 " Plug plugins
 call plug#begin('~/.local/share/nvim/plugged')
+Plug 'lambdalisue/suda.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
@@ -185,7 +186,7 @@ command! E execute "40vsp | Explore | normal! <C-w>r"
 command! XX :exec Run()
 
 " Save as sudo
-command! W :exec ':silent w !sudo tee % > /dev/null' | :edit!
+command! W :exec 'w suda://%'
 
 " Zip the current file
 command! Z :exec Zip()
