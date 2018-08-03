@@ -200,9 +200,6 @@ autocmd BufReadPost * if fugitive#extract_git_dir(expand("%:p")) !=# "" | execut
 
 " Plugin configuration {{{
 
-" Powerline fonts for airline
-let g:airline_powerline_fonts = 1
-
 " Show all buffers in case of a single tab
 let g:airline#extensions#tabline#enabled = 1
 
@@ -210,5 +207,10 @@ let g:airline#extensions#tabline#enabled = 1
 let TERM = split(system("echo $TERM"), '[^a-z]')[0]
 if TERM ==# "linux"
     let g:airline_theme = "base16"
+else
+    " Powerline fonts for airline
+    let g:airline_powerline_fonts = 1
+
+    let g:airline_theme = "dark_modified"
 endif
 " }}}
