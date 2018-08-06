@@ -1,4 +1,5 @@
 " MIT License. Copyright (c) 2013-2018 Bailey Ling et al.
+"
 " vim: et ts=2 sts=2 sw=2 tw=80
 
 scriptencoding utf-8
@@ -96,7 +97,7 @@ let g:airline#themes#dark_modified#palette.normal_modified = {
       \ }
 
 
-let s:airline_a_insert = [ '#00005f' , '#00dfff' , 17  , 11  ]
+let s:airline_a_insert = [ '#00005f' , '#00dfff' , 17  , 45  ]
 let s:airline_b_insert = [ '#ffffff' , '#005fff' , 255 , 27  ]
 let s:airline_c_insert = [ '#ffffff' , '#000080' , 15  , 17  ]
 let g:airline#themes#dark_modified#palette.insert = airline#themes#generate_color_map(s:airline_a_insert, s:airline_b_insert, s:airline_c_insert)
@@ -132,7 +133,7 @@ let g:airline#themes#dark_modified#palette.inactive_modified = {
 
 " For commandline mode, we use the colors from normal mode, except the mode
 " indicator should be colored differently, e.g. blue on light green
-let s:airline_a_commandline   = [ '#00005f' , '#dfff00' , 17 , 11 ]
+let s:airline_a_commandline   = [ '#00005f' , '#dfff00' , 245 , 190 ]
 let s:airline_b_commandline   = [ '#ffffff' , '#444444' , 255 , 238 ]
 let s:airline_c_commandline   = [ '#9cffd3' , '#202020' , 85  , 234 ]
 let g:airline#themes#dark_modified#palette.commandline = airline#themes#generate_color_map(s:airline_a_commandline, s:airline_b_commandline, s:airline_c_commandline)
