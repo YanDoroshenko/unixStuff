@@ -76,7 +76,7 @@ alias y='pakku --color=always '
 alias g='y -S '
 alias ug='y -Rncs '
 alias u='y -Syyuu '
-alias m='y -Qdt '
+alias m='y -Rncs $(y -Qdtq) 2>/dev/null'
 alias l='pacman -Q | grep'
 
 # Extraction script #
