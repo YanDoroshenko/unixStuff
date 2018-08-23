@@ -1,6 +1,7 @@
 # Necessary and not obvious Arch Linux packages
 gnome-keyring # Some password-related stuff (GPG key authentication in Evolution?)
 gvfs # Mounting file systems from GUI
+gvfs-mtp # Connecting Android device through MTP
 lightdm-gtk-greeter # GTK frontend for LightDM (service won't start without it)
 thunar-volman # Volume manager for Thunar
 ttf-google-fonts-git # Reasonable fonts in Chrome
