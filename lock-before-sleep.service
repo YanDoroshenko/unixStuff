@@ -10,7 +10,7 @@ Before=hybrid-sleep.target
 User=yan
 Type=forking
 Environment=DISPLAY=:0
-ExecStart=/usr/bin/sflock
+ExecStart=/usr/bin/asciiquarium-lock
 
 [Install]
 WantedBy=suspend.target
