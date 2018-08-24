@@ -178,6 +178,10 @@
   </dock>
   <keyboard>
       <chainQuitKey>C-g</chainQuitKey>
+      <!-- Reconfigure key -->
+      <keybind key="W-r">
+          <action name="Reconfigure"/>
+      </keybind>
       <!-- Keybindings for desktop switching -->
       <keybind key="C-A-Left">
           <action name="GoToDesktop">
