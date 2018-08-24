@@ -1,4 +1,5 @@
 " MIT License. Copyright (c) 2013-2018 Bailey Ling et al.
+"
 " vim: et ts=2 sts=2 sw=2 tw=80
 
 scriptencoding utf-8
@@ -132,7 +133,7 @@ let g:airline#themes#dark_modified#palette.inactive_modified = {
 
 " For commandline mode, we use the colors from normal mode, except the mode
 " indicator should be colored differently, e.g. blue on light green
-let s:airline_a_commandline   = [ '#00005f' , '#dfff00' , 25 , 190 ]
+let s:airline_a_commandline   = [ '#00005f' , '#dfff00' , 245 , 190 ]
 let s:airline_b_commandline   = [ '#ffffff' , '#444444' , 255 , 238 ]
 let s:airline_c_commandline   = [ '#9cffd3' , '#202020' , 85  , 234 ]
 let g:airline#themes#dark_modified#palette.commandline = airline#themes#generate_color_map(s:airline_a_commandline, s:airline_b_commandline, s:airline_c_commandline)
