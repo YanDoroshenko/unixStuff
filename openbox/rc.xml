@@ -316,7 +316,7 @@
           </action>
       </keybind>
       <!-- Window tiling -->
-      <keybind key="W-Left">
+      <keybind key="C-A-h">
           <action name="UnmaximizeFull"/>
           <action name="MaximizeVert"/>
           <action name="MoveResizeTo">
@@ -324,7 +324,7 @@
           </action>
           <action name="MoveToEdgeWest"/>
       </keybind>
-      <keybind key="W-Right">
+      <keybind key="C-A-l">
           <action name="UnmaximizeFull"/>
           <action name="MaximizeVert"/>
           <action name="MoveResizeTo">
