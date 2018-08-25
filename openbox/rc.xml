@@ -319,6 +319,10 @@
               <direction>down</direction>
           </action>
       </keybind>
+      <!-- Window maximization -->
+      <keybind key="C-A-k">
+          <action name="ToggleMaximize"/>
+      </keybind>
       <!-- Window tiling -->
       <keybind key="C-A-h">
           <action name="UnmaximizeFull"/>
