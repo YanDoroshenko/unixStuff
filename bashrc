@@ -11,6 +11,7 @@ export EDITOR=$VISUAL
 
 # General system aliases #
 alias v='nvim '
+alias sbt='SBT_OPTS="-Xms512M -Xmx1024M -Xss2M -XX:MaxMetaspaceSize=1024M" sbt ' # Prevent OutOfMemoryError in SBT by giving it more memory
 
 # Tmux with correct colors
 if [[ $TERM =~ ^xterm.*$ ]]; then
