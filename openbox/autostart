@@ -5,18 +5,14 @@ nitrogen --restore &
 xfce4-clipman &
 albert &
 
-xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
-xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Horizontal Scroll Enabled" 1
-xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Accel Speed" 0.6
-xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Middle Emulation Enabled" 1
+xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Tapping Enabled" 1
+xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Horizontal Scroll Enabled" 1
+xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Accel Speed" 0.6
+xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Middle Emulation Enabled" 1
 
 xset r rate 250 30
 
-HDMI=$(xrandr | grep mm | grep "HDMI[0-9] connected")
-VGA=$(xrandr | grep mm | grep "DP[0-9] connected")
+HDMI=$(xrandr | grep mm | grep "HDMI-[0-9].* connected")
 if [ "$HDMI" ]; then
-    ~/.screenlayout/hdmi-fullhd-right.sh
-fi
-if [ "$VGA" ]; then
-    ~/.screenlayout/vga-fullhd-right.sh
+    ~/.screenlayout/hdmi-fullhd-left.sh
 fi
