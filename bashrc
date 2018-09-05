@@ -11,9 +11,6 @@ export EDITOR=$VISUAL
 
 # General system aliases #
 alias v='nvim '
-alias lisp='rlwrap sbcl'
-alias kf='sudo zkServer.sh start && sleep 5 && sudo kafka-server-start.sh /usr/share/kafka/config/server.properties'
-alias nzk='sudo zkServer.sh stop &&'
 
 # Tmux with correct colors
 if [[ $TERM =~ ^xterm.*$ ]]; then
@@ -35,8 +32,6 @@ fi
 alias sudo='sudo '
 
 alias sd='sudo $(fc -ln -1)'
-
-alias wr='curl wttr.in/Prague'
 
 # Coloring output #
 alias ls='ls --color=auto'
@@ -64,12 +59,6 @@ alias mkdir='mkdir -p'
 
 # Network aliases #
 alias p='ping -c 3 google.com'
-
-# VPN
-alias cs='systemctl start openvpn-client@casablanca'
-alias ncs='systemctl stop openvpn-client@casablanca'
-alias dl='systemctl start openvpn-client@datalite'
-alias ndl='systemctl stop openvpn-client@datalite'
 
 # Package aliases #
 alias y='pakku --color=always '
