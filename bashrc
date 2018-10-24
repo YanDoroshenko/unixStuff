@@ -94,7 +94,7 @@ x () {
 
 # Convert pdf to jpg #
 function pdftojpg {
-    bash /home/yan/git/unixStuff/pdftojpg.sh "$1";
+    bash /home/yan/git/github/unixStuff/pdftojpg.sh "$1";
 }
 
 # Color prompt #
