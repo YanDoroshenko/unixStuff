@@ -3,6 +3,7 @@ plank &
 xcompmgr &
 nitrogen --restore &
 albert &
+light-locker &
 
 xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Tapping Enabled" 1
 xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Horizontal Scroll Enabled" 1
