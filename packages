@@ -8,3 +8,4 @@ ttf-google-fonts-git # Reasonable fonts in Chrome
 tumbler # Thumbnails
 xclip # System clipboard support in Vim
 xcompmgr # Transparency effects
+python2-xdg # For /xdg/autostart to work
