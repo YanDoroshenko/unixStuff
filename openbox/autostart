@@ -14,5 +14,3 @@ HDMI=$(xrandr | grep mm | grep "HDMI-[0-9].* connected")
 if [ "$HDMI" ]; then
     ~/.screenlayout/hdmi-fullhd-left.sh
 fi
-
-xset r rate 250 30
