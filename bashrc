@@ -13,6 +13,9 @@ export EDITOR=$VISUAL
 alias v='nvim '
 alias sbt='SBT_OPTS="-Xms512M -Xmx1024M -Xss2M -XX:MaxMetaspaceSize=1024M" sbt ' # Prevent OutOfMemoryError in SBT by giving it more memory
 
+# Currency converter
+alias currency='git/github/unixStuff/exchange.sh'
+
 # Tmux with correct colors
 if [[ $TERM =~ ^xterm.*$ ]]; then
     alias t='tmux -2'
