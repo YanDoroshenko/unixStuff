@@ -382,6 +382,21 @@
         <command>pulseaudiocontrol mute</command>
       </action>
     </keybind>
+    <keybind key="XF86AudioPlay">
+      <action name="Execute">
+        <command>cmus-remote --pause</command>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioPrev">
+      <action name="Execute">
+        <command>cmus-remote --prev</command>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioNext">
+      <action name="Execute">
+        <command>cmus-remote --next</command>
+      </action>
+    </keybind>
     <keybind key="Print">
       <action name="Execute">
         <command>xfce4-screenshooter</command>
