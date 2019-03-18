@@ -23,6 +23,9 @@ else
     alias t='tmux'
 fi
 
+# Cmus music player
+alias cmus='udisksctl mount -p block_devices/sda1 /mnt/hdd 2>/dev/null ; cmus'
+
 alias dt='git difftool -y'
 
 alias o='
