@@ -207,28 +207,16 @@
         <wrap>no</wrap>
       </action>
     </keybind>
-    <keybind key="C-A-Up">
-      <action name="SendToDesktop">
-        <to>left</to>
-        <wrap>no</wrap>
-      </action>
-    </keybind>
-    <keybind key="C-A-Down">
+    <keybind key="W-A-l">
       <action name="SendToDesktop">
         <to>right</to>
-        <wrap>no</wrap>
+        <wrap>yes</wrap>
       </action>
     </keybind>
-    <keybind key="S-A-Up">
+    <keybind key="W-A-h">
       <action name="SendToDesktop">
-        <to>up</to>
-        <wrap>no</wrap>
-      </action>
-    </keybind>
-    <keybind key="S-A-Down">
-      <action name="SendToDesktop">
-        <to>down</to>
-        <wrap>no</wrap>
+        <to>left</to>
+        <wrap>yes</wrap>
       </action>
     </keybind>
     <keybind key="W-1">
