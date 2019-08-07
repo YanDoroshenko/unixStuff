@@ -81,14 +81,14 @@ autocmd FileType vim setlocal foldmethod=marker
 " Indents and formats for makefiles
 autocmd FileType make set noet ci pi sts=0 sw=4 ts=4
 
-" GCC integration
-autocmd BufEnter *.cpp compiler gcc
-
 " Build TeX file
 autocmd FileType tex command! L execute "normal! mz | :exec Latex()\<cr> | `z"
 
-" Build java file
-autocmd FileType java command! J execute "w |! javac %"
+" Format JSON file
+autocmd FileType json command F execute "normal! Gmz:read ! jq '.' % <Cr>`z\"_dgg"
+
+" Format XML file
+autocmd! FileType xml command! F call FormatXML()
 
 " git add --patch current file with Gpatch
 autocmd BufReadPost * if fugitive#extract_git_dir(expand("%:p")) !=# "" | execute "command! Gpatch w | Git add --patch %" | endif
@@ -133,6 +133,35 @@ endfunction
 " Git add function
 function! GitAdd(file)
     :exec join([':!git add', a:file], " ")
+endfunction
+
+" Format XML
+function! FormatXML()
+  " save the filetype so we can restore it later
+  let l:origft = &ft
+  set ft=
+  " delete the xml header if it exists. This will
+  " permit us to surround the document with fake tags
+  " without creating invalid xml.
+  1s/<?xml .*?>//e
+  " insert fake tags around the entire document.
+  " This will permit us to pretty-format excerpts of
+  " XML that may contain multiple top-level elements.
+  0put ='<PrettyXML>'
+  $put ='</PrettyXML>'
+  silent %!xmllint --format -
+  " xmllint will insert an <?xml?> header. it's easy enough to delete
+  " if you don't want it.
+  " delete the fake tags
+  2d
+  $d
+  " restore the 'normal' indentation, which is one extra level
+  " too deep due to the extra tags we wrapped around the document.
+  silent %<
+  " back to home
+  1
+  " restore the filetype
+  exe "set ft=" . l:origft
 endfunction
 " }}}
 
