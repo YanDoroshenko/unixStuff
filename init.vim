@@ -60,9 +60,6 @@ nnoremap <Space> i
 
 " Handy mappings {{{
 
-" Reformat the whole file on Ctrl+l
-nnoremap <C-l> mzgg=G`z
-
 " Repeat action on the next line on Ctrl+o
 noremap <C-o> @='j0.'<Esc>
 
@@ -207,6 +204,9 @@ call plug#end()
 " }}}
 
 " Commands {{{
+
+" Reformat the whole file
+command! F normal! mzgg=G`z
 
 " Run Explore vertically
 command! E execute "40vsp | Explore | normal! <C-w>r"
