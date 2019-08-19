@@ -311,7 +311,47 @@
     <keybind key="C-A-k">
       <action name="ToggleMaximize"/>
     </keybind>
+    <!-- Window minimization -->
+    <keybind key="C-A-j">
+      <action name="Iconify"/>
+    </keybind>
     <!-- Window tiling -->
+    <keybind key="C-A-u">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <width>50%</width>
+        <height>50%</height>
+      </action>
+      <action name="MoveToEdgeWest"/>
+      <action name="MoveToEdgeNorth"/>
+    </keybind>
+    <keybind key="C-A-i">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <width>50%</width>
+        <height>50%</height>
+      </action>
+      <action name="MoveToEdgeEast"/>
+      <action name="MoveToEdgeNorth"/>
+    </keybind>
+    <keybind key="C-A-n">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <width>50%</width>
+        <height>50%</height>
+      </action>
+      <action name="MoveToEdgeWest"/>
+      <action name="MoveToEdgeSouth"/>
+    </keybind>
+    <keybind key="C-A-m">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <width>50%</width>
+        <height>50%</height>
+      </action>
+      <action name="MoveToEdgeEast"/>
+      <action name="MoveToEdgeSouth"/>
+    </keybind>
     <keybind key="C-A-h">
       <action name="UnmaximizeFull"/>
       <action name="MaximizeVert"/>
