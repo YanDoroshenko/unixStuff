@@ -82,7 +82,7 @@ autocmd FileType make set noet ci pi sts=0 sw=4 ts=4
 autocmd FileType tex command! L execute "normal! mz | :exec Latex()\<cr> | `z"
 
 " Format JSON file
-autocmd FileType json command F execute "normal! Gmz:read ! jq '.' % <Cr>`z\"_dgg"
+autocmd FileType json command! F execute "normal! Gmz:read ! jq '.' % <Cr>`z\"_dgg"
 
 " Format XML file
 autocmd! FileType xml command! F call FormatXML()
