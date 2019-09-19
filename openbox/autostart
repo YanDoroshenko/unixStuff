@@ -2,8 +2,11 @@ xfce4-panel &
 plank &
 xcompmgr &
 nitrogen --restore &
+pasystray -a &
+nm-applet &
 albert &
 light-locker &
+cameramonitor-quiet &
 
 xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Tapping Enabled" 1
 xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Horizontal Scroll Enabled" 1
