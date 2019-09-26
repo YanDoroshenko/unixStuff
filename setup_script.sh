@@ -59,11 +59,33 @@ echo "[merge]
 [mergetool]
   prompt = true
 [mergetool \"vimdiff\"]
-  cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+  cmd = nvim -d \$LOCAL \$REMOTE
 [difftool]
   prompt = false
 [diff]
   tool = vimdiff" > ~/.gitconfig
+
+# Configure DPMS
+xset dpms 600 600 600
+
+# Allow Thunar mount drives
+echo 'polkit.addRule(function(action, subject) {
+    if ((action.id == "org.freedesktop.udisks2.filesystem-mount-system" ||
+         action.id == "org.freedesktop.udisks2.filesystem-mount") &&
+        subject.isInGroup("wheel")) {
+        return polkit.Result.YES;
+    }
+});' | sudo tee /etc/polkit-1/rules.d/10-udisks2.rules
+
+# Setup Powerline fonts
+# clone
+git clone https://github.com/powerline/fonts.git --depth=1 &&
+# install
+cd fonts
+./install.sh &&
+# clean-up a bit
+cd ..
+rm -rf fonts
 
 # Cleanup
 echo "Cleaning up"
