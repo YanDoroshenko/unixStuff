@@ -28,9 +28,9 @@ alias currency='git/github/unixStuff/exchange.sh'
 
 # Tmux with correct colors
 if [[ $TERM =~ ^xterm.*$ ]]; then
-    alias t='tmux -2'
+    alias t='tmux -u -2'
 else
-    alias t='tmux'
+    alias t='tmux -u'
 fi
 
 # Cmus music player
