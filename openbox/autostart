@@ -2,7 +2,7 @@ xfce4-panel &
 plank &
 xcompmgr &
 nitrogen --restore &
-pasystray -a &
+pasystray --notify=all &
 nm-applet &
 albert &
 light-locker &
