@@ -19,7 +19,7 @@ set ignorecase
 set hlsearch
 
 " Show line numbers
-set number
+set number relativenumber
 
 " Tab produces shiftwidth spaces
 set expandtab
