@@ -38,6 +38,26 @@ alias cmus='udisksctl mount -p block_devices/sda1 /mnt/hdd 2>/dev/null ; cmus'
 
 alias dt='git difftool -y'
 
+# Docker
+alias cassandra='
+if [ ! -z $(systemctl is-active docker | grep inactive) ]; then
+    systemctl start docker
+fi &&
+docker run --rm  -p 127.0.0.1:9042:9042 -p 127.0.0.1:9160:9160 --name cassandra -v $HOME/docker/volumes/cassandra:/var/lib/cassandra cassandra:latest
+'
+alias postgres='
+if [ ! -z $(systemctl is-active docker | grep inactive) ]; then
+    systemctl start docker
+fi &&
+docker run --rm  -p 127.0.0.1:5432:5432 -e POSTGRES_PASSWORD="1234" --name postgres -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data postgres:alpine
+'
+alias kafka='
+if [ ! -z $(systemctl is-active docker | grep inactive) ]; then
+    systemctl start docker
+fi &&
+docker run --rm --name kafka -p 2181:2181 -p 9092:9092 -e ADVERTISED_HOST=127.0.0.1 -e LOG_RETENTION_HOURS=-1 -e LOG_RETENTION_BYTES=-1 johnnypark/kafka-zookeeper
+'
+
 alias o='
 read -p "Are you sure?(Y/n) " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]; then
@@ -128,3 +148,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+alias f='~/Downloads/fusion/4.2.0/bin/fusion start'
+alias nf='~/Downloads/fusion/4.2.0/bin/fusion stop'
