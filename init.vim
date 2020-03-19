@@ -78,6 +78,9 @@ autocmd FileType vim setlocal foldmethod=marker
 " Indents and formats for makefiles
 autocmd FileType make set noet ci pi sts=0 sw=4 ts=4
 
+" Indents and formats for YAML
+autocmd FileType yaml set sw=2
+
 " Build TeX file
 autocmd FileType tex command! L execute "normal! mz | :exec Latex()\<cr> | `z"
 
