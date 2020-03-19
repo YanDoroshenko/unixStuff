@@ -385,11 +385,6 @@
         <command>light-locker-command -l</command>
       </action>
     </keybind>
-    <keybind key="C-A-t">
-      <action name="Execute">
-        <command>guake</command>
-      </action>
-    </keybind>
     <keybind key="A-x">
       <action name="Execute">
         <command>albert show</command>

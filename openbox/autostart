@@ -7,6 +7,8 @@ nm-applet &
 albert &
 light-locker &
 cameramonitor-quiet &
+xfce4-power-manager &
+guake &
 
 xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Tapping Enabled" 1
 xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Horizontal Scroll Enabled" 1
