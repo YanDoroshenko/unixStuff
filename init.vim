@@ -127,7 +127,8 @@ endfunction
 " Run function
 function! Run()
     :w
-    :!chmod +x %; ./%
+    :!chmod +x %
+    :! %:p
 endfunction
 
 " Git add function
