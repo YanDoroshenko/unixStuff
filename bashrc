@@ -39,6 +39,23 @@ alias cmus='udisksctl mount -p block_devices/sda1 /mnt/hdd 2>/dev/null ; cmus'
 alias dt='git difftool -y'
 
 # Docker
+alias env='
+if [ ! -z $(systemctl is-active docker | grep inactive) ]; then
+    systemctl start docker
+fi
+tmux new-session -d -s env
+tmux split-window -h
+tmux split-window -v -t 0
+tmux split-window -v -t 0.2
+clear="unset HISTFILE && clear &&"
+tmux send-keys -t 0.0 "$clear kafka" C-m
+tmux send-keys -t 0.1 "$clear cassandra" C-m
+tmux send-keys -t 0.2 "$clear postgres" C-m
+tmux send-keys -t 0.3 "$clear cd ~/git/upstart" C-m
+tmux attach-session -t env
+systemctl stop docker
+'
+
 alias cassandra='
 if [ ! -z $(systemctl is-active docker | grep inactive) ]; then
     systemctl start docker
