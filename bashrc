@@ -21,7 +21,7 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # General system aliases #
 alias v='nvim '
-alias sbt='SBT_OPTS="-Xms512M -Xmx1024M -Xss2M -XX:MaxMetaspaceSize=1024M" sbt ' # Prevent OutOfMemoryError in SBT by giving it more memory
+alias s='sbt -jvm-debug 5150'
 
 # Currency converter
 alias currency='git/github/unixStuff/exchange.sh'
@@ -47,11 +47,12 @@ tmux new-session -d -s env
 tmux split-window -h
 tmux split-window -v -t 0
 tmux split-window -v -t 0.2
+HISTFILE_BAK=$HISTFILE
 clear="unset HISTFILE && clear &&"
 tmux send-keys -t 0.0 "$clear kafka" C-m
 tmux send-keys -t 0.1 "$clear cassandra" C-m
 tmux send-keys -t 0.2 "$clear postgres" C-m
-tmux send-keys -t 0.3 "$clear cd ~/git/upstart" C-m
+tmux send-keys -t 0.3 "$clear cd ~/git/upstart; HISTFILE=$HISTFILE_BAK; clear" C-m
 tmux attach-session -t env
 systemctl stop docker
 '
@@ -72,7 +73,16 @@ alias kafka='
 if [ ! -z $(systemctl is-active docker | grep inactive) ]; then
     systemctl start docker
 fi &&
-docker run --rm --name kafka -p 2181:2181 -p 9092:9092 -e ADVERTISED_HOST=127.0.0.1 -e LOG_RETENTION_HOURS=-1 -e LOG_RETENTION_BYTES=-1 johnnypark/kafka-zookeeper
+docker run  --rm \
+  --name=kafka \
+  -p 2181:2181 \
+  -p 9092:9092 \
+  --env ADVERTISED_HOST=localhost \
+  --env ADVERTISED_PORT=9092  \
+  --env LOG_RETENTION_HOURS=-1 \
+  --env LOG_RETENTION_BYTES=-1 \
+  -v $HOME/docker/volumes/zookeper:/tmp/zookeeper \
+  -v $HOME/docker/volumes/kafka-logs:/tmp/kafka-logs  johnnypark/kafka-zookeeper
 '
 
 alias o='
@@ -103,11 +113,7 @@ alias less='less -r'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../../'
-alias downloads='cd ~/Downloads'
-alias drop='cd ~/Dropbox'
-alias docs='cd ~/Documents'
 alias rr='rm -rf'
-alias s='cd ~/Dropbox/studies'
 alias cp='cp -r'
 alias mkdir='mkdir -p'
 
