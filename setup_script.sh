@@ -87,6 +87,9 @@ cd fonts
 cd ..
 rm -rf fonts
 
+echo "xset r rate 220 32" > ~/.xprofile
+echo "export LC_TIME=uk_UA.utf8" > ~/.profile
+
 # Cleanup
 echo "Cleaning up"
 cd ..
