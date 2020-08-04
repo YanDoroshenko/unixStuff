@@ -174,3 +174,6 @@ fi
 
 alias f='~/Downloads/fusion/4.2.0/bin/fusion start'
 alias nf='~/Downloads/fusion/4.2.0/bin/fusion stop'
+
+[[ $- != *i* ]] && return
+[[ -z "$TMUX" ]] && t
