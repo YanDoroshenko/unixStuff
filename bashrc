@@ -26,12 +26,6 @@ alias s='sbt -jvm-debug 5150'
 # Currency converter
 alias currency='git/github/unixStuff/exchange.sh'
 
-# Tmux with correct colors
-if [[ $TERM =~ ^xterm.*$ ]]; then
-    alias t='tmux -u -2'
-else
-    alias t='tmux -u'
-fi
 
 # Cmus music player
 alias cmus='udisksctl mount -p block_devices/sda1 /mnt/hdd 2>/dev/null ; cmus'
@@ -42,6 +36,9 @@ alias dt='git difftool -y'
 alias env='
 if [ ! -z $(systemctl is-active docker | grep inactive) ]; then
     systemctl start docker
+fi
+if ! { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
+    tmux-kill session
 fi
 tmux new-session -d -s env
 tmux split-window -h
@@ -176,4 +173,8 @@ alias f='~/Downloads/fusion/4.2.0/bin/fusion start'
 alias nf='~/Downloads/fusion/4.2.0/bin/fusion stop'
 
 [[ $- != *i* ]] && return
-[[ -z "$TMUX" ]] && t
+if [[ -z "$TMUX" && "$TERM" =~ ^xterm.*$ ]]; then
+    exec tmux -u -2
+elif [[ -z "$TMUX" ]]; then
+    exec tmux -u
+fi
