@@ -38,7 +38,7 @@ if [ ! -z $(systemctl is-active docker | grep inactive) ]; then
     systemctl start docker
 fi
 if ! { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
-    tmux-kill session
+    tmux kill-session
 fi
 tmux new-session -d -s env
 tmux split-window -h
