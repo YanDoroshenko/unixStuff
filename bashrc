@@ -37,20 +37,17 @@ alias env='
 if [ ! -z $(systemctl is-active docker | grep inactive) ]; then
     systemctl start docker
 fi
-if ! { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
-    tmux kill-session
-fi
 tmux new-session -d -s env
-tmux split-window -h
-tmux split-window -v -t 0
-tmux split-window -v -t 0.2
+tmux split-window -h -t env
+tmux split-window -v -t env
+tmux split-window -v -t ebv.2
 HISTFILE_BAK=$HISTFILE
 clear="unset HISTFILE && clear &&"
 tmux send-keys -t 0.0 "$clear kafka" C-m
 tmux send-keys -t 0.1 "$clear cassandra" C-m
 tmux send-keys -t 0.2 "$clear postgres" C-m
 tmux send-keys -t 0.3 "$clear cd ~/git/upstart; HISTFILE=$HISTFILE_BAK; clear" C-m
-tmux attach-session -t env
+tmux switch-client -t env
 systemctl stop docker
 '
 

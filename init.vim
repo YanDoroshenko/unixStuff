@@ -91,7 +91,12 @@ autocmd FileType json command! F execute "normal! Gmz:1,$!jq '.'<Cr>`z"
 autocmd! FileType xml command! F call FormatXML()
 
 " Remove trailing whitespaces before save
-autocmd BufWritePre * :silent! %smagic/\v[ \t]+$//g
+autocmd BufWritePre * call RemoveTrailing()
+function RemoveTrailing()
+    :normal! mz
+    :silent! %smagic/\v\s+$//g
+    :normal! `z
+endfunction
 " }}}
 
 " Clipboard {{{
