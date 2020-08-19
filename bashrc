@@ -38,7 +38,7 @@ function env {
     if [ ! -z $(systemctl is-active docker | grep inactive) ]; then
         systemctl start docker
     fi
-    tmux new-session -d -t env
+    tmux rename-session env
     tmux split-window -h -t env
     tmux split-window -v -t env
     tmux split-window -v -t env.0
