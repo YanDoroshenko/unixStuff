@@ -33,60 +33,61 @@ alias cmus='udisksctl mount -p block_devices/sda1 /mnt/hdd 2>/dev/null ; cmus'
 alias dt='git difftool -y'
 
 # Docker
-alias env='
-if [ ! -z $(systemctl is-active docker | grep inactive) ]; then
-    systemctl start docker
-fi
-tmux new-session -d -s env
-tmux split-window -h -t env
-tmux split-window -v -t env
-tmux split-window -v -t ebv.2
-HISTFILE_BAK=$HISTFILE
-clear="unset HISTFILE && clear &&"
-tmux send-keys -t 0.0 "$clear kafka" C-m
-tmux send-keys -t 0.1 "$clear cassandra" C-m
-tmux send-keys -t 0.2 "$clear postgres" C-m
-tmux send-keys -t 0.3 "$clear cd ~/git/upstart; HISTFILE=$HISTFILE_BAK; clear" C-m
-tmux switch-client -t env
-systemctl stop docker
-'
+function env {
+    tmux kill-session -t env 2>/dev/null
+    if [ ! -z $(systemctl is-active docker | grep inactive) ]; then
+        systemctl start docker
+    fi
+    tmux new-session -d -t env
+    tmux split-window -h -t env
+    tmux split-window -v -t env
+    tmux split-window -v -t env.0
+    HISTFILE_BAK=$HISTFILE
+    clear="unset HISTFILE && clear &&"
+    tmux send-keys -t env.0 "$clear kafka" C-m
+    tmux send-keys -t env.1 "$clear cassandra" C-m
+    tmux send-keys -t env.2 "$clear postgres" C-m
+    tmux send-keys -t env.3 "$clear cd ~/git/upstart; HISTFILE=$HISTFILE_BAK; clear" C-m
+    tmux switch-client -t env.3
+    tmux bind-key -n C-q confirm-before -p "Stop Docker environment? (y/n)" 'new-window; send-keys -t env "systemctl stop docker.service && tmux bind-key -n C-q confirm-before kill-session && tmux kill-session -t env" Enter'
+}
 
-alias cassandra='
-if [ ! -z $(systemctl is-active docker | grep inactive) ]; then
-    systemctl start docker
-fi &&
-docker run --rm  -p 127.0.0.1:9042:9042 -p 127.0.0.1:9160:9160 --name cassandra -v $HOME/docker/volumes/cassandra:/var/lib/cassandra cassandra:latest
-'
-alias postgres='
-if [ ! -z $(systemctl is-active docker | grep inactive) ]; then
-    systemctl start docker
-fi &&
-docker run --rm  -p 127.0.0.1:5432:5432 -e POSTGRES_PASSWORD="1234" --name postgres -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data postgres:alpine
-'
-alias kafka='
-if [ ! -z $(systemctl is-active docker | grep inactive) ]; then
-    systemctl start docker
-fi &&
-docker run  --rm \
-  --name=kafka \
-  -p 2181:2181 \
-  -p 9092:9092 \
-  --env ADVERTISED_HOST=localhost \
-  --env ADVERTISED_PORT=9092  \
-  --env LOG_RETENTION_HOURS=-1 \
-  --env LOG_RETENTION_BYTES=-1 \
-  -v $HOME/docker/volumes/zookeper:/tmp/zookeeper \
-  -v $HOME/docker/volumes/kafka-logs:/tmp/kafka-logs  johnnypark/kafka-zookeeper
-'
+function cassandra {
+    if [ ! -z $(systemctl is-active docker | grep inactive) ]; then
+        systemctl start docker
+    fi && docker run --rm  -p 127.0.0.1:9042:9042 -p 127.0.0.1:9160:9160 --name cassandra -v $HOME/docker/volumes/cassandra:/var/lib/cassandra cassandra:latest
+}
 
-alias o='
-read -p "Are you sure?(Y/n) " -n 1 -r
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-    poweroff
-else
-    echo
-fi
-'
+function postgres {
+    if [ ! -z $(systemctl is-active docker | grep inactive) ]; then
+        systemctl start docker
+    fi && docker run --rm  -p 127.0.0.1:5432:5432 -e POSTGRES_PASSWORD="1234" --name postgres -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data postgres:alpine
+}
+
+function kafka {
+    if [ ! -z $(systemctl is-active docker | grep inactive) ]; then
+        systemctl start docker
+    fi && docker run  --rm \
+        --name=kafka \
+        -p 2181:2181 \
+        -p 9092:9092 \
+        --env ADVERTISED_HOST=localhost \
+        --env ADVERTISED_PORT=9092  \
+        --env LOG_RETENTION_HOURS=-1 \
+        --env LOG_RETENTION_BYTES=-1 \
+        -v $HOME/docker/volumes/zookeper:/tmp/zookeeper \
+        -v $HOME/docker/volumes/kafka-logs:/tmp/kafka-logs  johnnypark/kafka-zookeeper
+}
+
+function o {
+    read -p "Are you sure?(Y/n) " -n 1 -r
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        poweroff
+    else
+        echo
+    fi
+}
+
 alias sudo='sudo '
 
 alias sd='sudo $(fc -ln -1)'
@@ -159,11 +160,11 @@ fi
 
 # Fix bash-completion
 if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+        . /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+        . /etc/bash_completion
+    fi
 fi
 
 alias f='~/Downloads/fusion/4.2.0/bin/fusion start'
