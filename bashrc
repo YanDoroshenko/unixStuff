@@ -48,8 +48,8 @@ function env {
     tmux send-keys -t env.1 "$clear cassandra" C-m
     tmux send-keys -t env.2 "$clear postgres" C-m
     tmux send-keys -t env.3 "$clear cd ~/git/upstart; HISTFILE=$HISTFILE_BAK; clear" C-m
-    tmux switch-client -t env.3
-    tmux bind-key -n C-q confirm-before -p "Stop Docker environment? (y/n)" 'new-window; send-keys -t env "systemctl stop docker.service && tmux bind-key -n C-q confirm-before kill-session && tmux kill-session -t env" Enter'
+    tmux bind-key -T ENV -n C-q confirm-before -p "Stop Docker environment? (y/n)" 'new-window; send-keys -t env "systemctl stop docker.service && tmux kill-session -t env" Enter'
+    tmux switch-client -T ENV -t env.3
 }
 
 function cassandra {
