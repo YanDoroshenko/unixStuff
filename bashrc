@@ -21,6 +21,7 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # General system aliases #
 alias v='nvim '
+alias j='nvim /tmp/$(cat /dev/urandom | tr -dc "a-zA-Z0-9" | fold -w 32 | head -n 1).json'
 alias s='sbt -jvm-debug 5150'
 
 # Currency converter
