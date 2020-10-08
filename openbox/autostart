@@ -1,4 +1,5 @@
 xfce4-panel &
+/usr/lib/xfce4/notifyd/xfce4-notifyd &
 plank &
 xcompmgr &
 nitrogen --restore &
