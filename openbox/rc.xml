@@ -387,7 +387,7 @@
     </keybind>
     <keybind key="A-x">
       <action name="Execute">
-        <command>albert show</command>
+        <command>albert toggle</command>
       </action>
     </keybind>
     <keybind key="XF86AudioLowerVolume">
@@ -430,7 +430,7 @@
         <command>xfce4-popup-clipman</command>
       </action>
     </keybind>
-    <keybind key="C-W-A-space">
+    <keybind key="C-W-A-Home">
       <action name="Execute">
         <command>shutdown -P 0</command>
       </action>
