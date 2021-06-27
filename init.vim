@@ -81,8 +81,20 @@ autocmd FileType make set noet ci pi sts=0 sw=4 ts=4
 " Indents and formats for YAML
 autocmd FileType yaml set sw=2
 
+" Indents and formats for Haskell
+autocmd FileType haskell set sw=2
+
 " Build TeX file
 autocmd FileType tex command! L execute "normal! mz | :exec Latex()\<cr> | `z"
+
+" Build Stack project
+autocmd FileType haskell command! B execute "normal! mz | :exec StackBuild()<cr> | `z"
+
+" Run Stack project
+autocmd FileType haskell command! R execute "normal! mz | :exec StackRun()\<cr> | `z"
+
+" Test Stack project
+autocmd FileType haskell command! T execute "normal! mz | :exec StackTest()\<cr> | `z"
 
 " Format JSON file
 autocmd FileType json command! F execute "normal! Gmz:1,$!jq '.'<Cr>`z"
@@ -119,6 +131,23 @@ function! Zip()
     :silent !zip %:r.zip %
     :redraw!
 endfunction
+
+" Haskell Stack functions
+function! StackBuild()
+    :wa
+    :! stack build
+endfunction
+
+function! StackRun()
+    :wa
+    :! stack run
+endfunction
+
+function! StackTest()
+    :wa
+    :! stack test
+endfunction
+
 
 " Function to build Latex files
 function! Latex()
@@ -199,12 +228,13 @@ filetype plugin on
 
 " Plug plugins
 call plug#begin('~/.local/share/nvim/plugged')
+Plug 'neovimhaskell/haskell-vim'
 Plug 'lambdalisue/suda.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-dispatch'
 Plug 'radenling/vim-dispatch-neovim'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
 call plug#end()
 " }}}
 
@@ -406,4 +436,5 @@ if !(TERM ==# "linux")
 endif
 
 " }}}
+
 " }}}
