@@ -7,7 +7,6 @@ pasystray --notify=all &
 nm-applet &
 albert &
 light-locker &
-cameramonitor-quiet &
 xfce4-power-manager &
 guake &
 
