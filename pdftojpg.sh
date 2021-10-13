@@ -19,7 +19,7 @@ read density
 	fi
     fi
 for file in "$@"; do
-    if [ ! -f "$file" ]; then 
+    if [ ! -f "$file" ]; then
 	echo "File $file does not exist">&2
 	exit 1
     fi
@@ -29,16 +29,16 @@ for file in "$@"; do
 	echo "$short.pdf does not seem to be a valid PDF file, ignoring"
 	continue
     fi
-    pages=`pdfinfo "$file" | grep Pages | cut -d' ' -f11` # Getting pages number from meta (-f 11 is stable, AFAIK)
+    pages=$(pdfinfo "$file" | grep Pages | awk '{print $2}')
     pages=$(($pages-1)) # Pages count from 0
     dir="converted_$short"
     if [ ! -d "$dir" ]; then
 	mkdir "$dir"
     fi
-    echo "Starting conversion of $file with density $density" 
+    echo "Starting conversion of $file with density $density"
     if [ $pages = 0 ]; then
 	convert -flatten -density $density "$file[$pages]"  "$dir"/"$short"_Page$(($pages+1)).jpg # Density for it to look readable
-    else 
+    else
 	for i in $(eval echo {0..$pages}); do
 	    convert -flatten -density $density "$file[$i]"  "$dir"/"$short"_Page$(($i+1)).jpg # Density for it to look readable
 	    echo "Page $((i+1)) of $((pages+1)) converted" # Progress
