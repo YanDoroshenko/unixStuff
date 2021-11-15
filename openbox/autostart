@@ -3,11 +3,12 @@ xfce4-panel &
 plank &
 xcompmgr &
 nitrogen --restore &
-pasystray --notify=all &
+pasystray --notify=source_default --notify=sink_default &
 nm-applet &
 albert &
 light-locker &
 xfce4-power-manager &
+xfce4-clipman &
 guake &
 
 xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Tapping Enabled" 1
