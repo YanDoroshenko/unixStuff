@@ -51,15 +51,15 @@ function env {
     fi
     tmux rename-session env
     tmux split-window -h -t env.0
-    tmux split-window -v -t env.0
-    tmux split-window -v -t env.2
+    #tmux split-window -v -t env.0
+    #tmux split-window -v -t env.2
     HISTFILE_BAK=$HISTFILE
     clear="unset HISTFILE && clear &&"
-    tmux send-keys -t env.0 "$clear kafka" C-m
-    tmux send-keys -t env.1 "$clear cassandra" C-m
-    tmux send-keys -t env.2 "$clear postgres" C-m
-    tmux send-keys -t env.3 "$clear cd ~/git/upstart; HISTFILE=$HISTFILE_BAK; clear" C-m
-    tmux switch-client -t env.3
+    #tmux send-keys -t env.0 "$clear kafka" C-m
+    tmux send-keys -t env.0 "$clear mongodb" C-m
+    tmux send-keys -t env.1 "$clear postgres" C-m
+    #tmux send-keys -t env.3 "$clear cd ~/git/upstart; HISTFILE=$HISTFILE_BAK; clear" C-m
+    #tmux switch-client -t env.3
 }
 
 function cassandra {
@@ -72,6 +72,12 @@ function postgres {
     if [ ! -z $(systemctl is-active docker | grep inactive) ]; then
         systemctl start docker
     fi && docker run --rm  -p 127.0.0.1:5432:5432 -e POSTGRES_PASSWORD="1234" --name postgres -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data postgres:alpine
+}
+
+function mongodb {
+    if [ ! -z $(systemctl is-active docker | grep inactive) ]; then
+        systemctl start docker
+    fi && docker run --rm -p 127.0.0.1:27017:27017 --name mongodb mongo:latest
 }
 
 function kafka {
@@ -88,6 +94,10 @@ function kafka {
         -v $HOME/docker/volumes/zookeper:/tmp/zookeeper \
         -v $HOME/docker/volumes/kafka-logs:/tmp/kafka-logs  johnnypark/kafka-zookeeper
 }
+
+
+# AWS credentials setup
+alias creds='~/git/resident/hub/tools/get_aws_credentials/okta_aws.py'
 
 function o {
     read -p "Are you sure?(Y/n) " -n 1 -r
