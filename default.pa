@@ -1,9 +1,0 @@
-.include /etc/pulse/default.pa
-
-
-load-module module-remap-source source_name=2i2_Left_Mic source_properties="device.description='2i2 Left In'" master=alsa_input.usb-Focusrite_Scarlett_2i2_USB_Y8AM4TR0C658B2-00.analog-stereo master_channel_map=front-left channel_map=mono
-
-load-module module-remap-source source_name=2i2_Right_Mic source_properties="device.description='2i2 Right In'" master=alsa_input.usb-Focusrite_Scarlett_2i2_USB_Y8AM4TR0C658B2-00.analog-stereo master_channel_map=front-right channel_map=mono
-
-load-module module-echo-cancel source_master=3 source_name=noecho
-set-default-source noecho
