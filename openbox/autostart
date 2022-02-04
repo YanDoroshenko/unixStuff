@@ -16,7 +16,10 @@ xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Horizontal Scroll Enabled" 
 xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Accel Speed" 0.6
 xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Middle Emulation Enabled" 1
 
-HDMI=$(xrandr | grep mm | grep "HDMI-[0-9].* connected")
-if [ "$HDMI" ]; then
+HDMI_FULL_HD=$(xrandr | grep mm | grep "HDMI-[0-9].* connected" | grep 1920x1080)
+HDMI_QHD=$(xrandr | grep mm | grep "HDMI-[0-9].* connected" | grep 2560x1440)
+if [ "$HDMI_FULL_HD" ]; then
     ~/.screenlayout/hdmi-fullhd-left.sh
+elif [ "$HDMI_QHD" ]; then
+    ~/.screenlayout/hdmi-qhd-left.sh
 fi
