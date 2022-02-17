@@ -13,6 +13,7 @@ export EDITOR=$VISUAL
 alias v='nvim '
 alias j='nvim /tmp/$(cat /dev/urandom | tr -dc "a-zA-Z0-9" | fold -w 32 | head -n 1).json'
 alias s='sbt -jvm-debug 5150'
+alias t='sbt clean coverage test coverageReport coverageGuard'
 
 # History
 
