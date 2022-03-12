@@ -1,0 +1,8 @@
+[Unit]
+Description=Set ForceFullCompositionPipeline to On to fix screen tearing.
+
+[Service]
+ExecStart=nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
+
+[Install]
+WantedBy=multi-user.target
