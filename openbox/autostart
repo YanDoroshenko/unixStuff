@@ -10,6 +10,7 @@ light-locker &
 xfce4-power-manager &
 xfce4-clipman &
 guake &
+nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }" &
 
 xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Tapping Enabled" 1
 xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Horizontal Scroll Enabled" 1
