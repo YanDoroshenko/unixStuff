@@ -23,6 +23,9 @@ set scrolloff 10
 # use enter for shell commands
 map <enter> shell
 
+# use icons
+set icons
+
 # execute current file (must be executable)
 map x $$f
 map X !$f
@@ -45,6 +48,8 @@ cmd open ${{
     test -L $f && f=$(readlink -f $f)
     case $(file --mime-type $f -b) in
         text/*) $EDITOR $fx;;
+        image/*) sxiv $f >/dev/null 2>&1 ;;
+        video/*) vlc $f >/dev/null 2>&1 ;;
         *) for f in $fx; do setsid $OPENER $f > /dev/null 2> /dev/null & done;;
     esac
 }}
@@ -70,7 +75,7 @@ cmd trash %set -f; mv $fx ~/.trash
 # }}
 
 # use '<delete>' key for either 'trash' or 'delete' command
-# map <delete> trash
+map <delete> trash
 # map <delete> delete
 
 # extract the current file with the right command
