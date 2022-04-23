@@ -42,59 +42,6 @@ alias cmus='udisksctl mount -p block_devices/sda1 /mnt/hdd 2>/dev/null ; cmus'
 
 alias dt='git difftool -y'
 
-# Docker
-function env {
-    tmux kill-session -t env 2>/dev/null
-    if [ ! -z $(systemctl is-active docker | grep inactive) ]; then
-        systemctl start docker
-    fi
-    tmux rename-session env
-    tmux split-window -h -t env.0
-    #tmux split-window -v -t env.0
-    #tmux split-window -v -t env.2
-    HISTFILE_BAK=$HISTFILE
-    clear="unset HISTFILE && clear &&"
-    #tmux send-keys -t env.0 "$clear kafka" C-m
-    tmux send-keys -t env.0 "$clear mongodb" C-m
-    tmux send-keys -t env.1 "$clear postgres" C-m
-    #tmux send-keys -t env.3 "$clear cd ~/git/upstart; HISTFILE=$HISTFILE_BAK; clear" C-m
-    #tmux switch-client -t env.3
-}
-
-function cassandra {
-    if [ ! -z $(systemctl is-active docker | grep inactive) ]; then
-        systemctl start docker
-    fi && docker run --rm  -p 127.0.0.1:9042:9042 -p 127.0.0.1:9160:9160 --name cassandra -v $HOME/docker/volumes/cassandra:/var/lib/cassandra cassandra:latest
-}
-
-function postgres {
-    if [ ! -z $(systemctl is-active docker | grep inactive) ]; then
-        systemctl start docker
-    fi && docker run --rm  -p 127.0.0.1:5432:5432 -e POSTGRES_PASSWORD="1234" --name postgres -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data postgres:alpine
-}
-
-function mongodb {
-    if [ ! -z $(systemctl is-active docker | grep inactive) ]; then
-        systemctl start docker
-    fi && docker run --rm -p 127.0.0.1:27017:27017 --name mongodb mongo:latest
-}
-
-function kafka {
-    if [ ! -z $(systemctl is-active docker | grep inactive) ]; then
-        systemctl start docker
-    fi && docker run  --rm \
-        --name=kafka \
-        -p 2181:2181 \
-        -p 9092:9092 \
-        --env ADVERTISED_HOST=localhost \
-        --env ADVERTISED_PORT=9092  \
-        --env LOG_RETENTION_HOURS=-1 \
-        --env LOG_RETENTION_BYTES=-1 \
-        -v $HOME/docker/volumes/zookeper:/tmp/zookeeper \
-        -v $HOME/docker/volumes/kafka-logs:/tmp/kafka-logs  johnnypark/kafka-zookeeper
-}
-
-
 # AWS credentials setup
 alias creds='~/git/resident/hub/tools/get_aws_credentials/okta_aws.py'
 
@@ -186,9 +133,6 @@ if ! shopt -oq posix; then
     fi
 fi
 
-alias f='~/Downloads/fusion/4.2.0/bin/fusion start'
-alias nf='~/Downloads/fusion/4.2.0/bin/fusion stop'
-
 [[ $- != *i* ]] && return
 if [[ -z "$TMUX" && "$TERM" =~ ^xterm.*$ ]]; then
     exec tmux -u -2
@@ -199,7 +143,7 @@ fi
 function vpn_on()
 {
     nmcli c up $1
-#    sudo ip route add 192.168.10.1 dev ppp0
+    #    sudo ip route add 192.168.10.1 dev ppp0
     sudo ip route add 172.16.0.0/12 dev ppp0
     sudo ip route add 10.0.0.0/8 dev ppp0
     sudo ip route add 192.168.224.0/19 dev ppp0
@@ -214,3 +158,165 @@ function vpn_off()
 alias prod='vpn_on prod'
 alias qa='vpn_on QA'
 alias off='vpn_off'
+
+export LF_ICONS="\
+    di=:\
+    fi=:\
+    ln=:\
+    or=:\
+    ex=:\
+    *.vimrc=:\
+    *.viminfo=:\
+    *.gitignore=:\
+    *.c=:\
+    *.cc=:\
+    *.clj=:\
+    *.coffee=:\
+    *.cpp=:\
+    *.css=:\
+    *.d=:\
+    *.dart=:\
+    *.erl=:\
+    *.exs=:\
+    *.fs=:\
+    *.go=:\
+    *.h=:\
+    *.hh=:\
+    *.hpp=:\
+    *.hs=:\
+    *.html=:\
+    *.java=:\
+    *.jl=:\
+    *.js=:\
+    *.json=:\
+    *.lua=:\
+    *.md=:\
+    *.php=:\
+    *.pl=:\
+    *.pro=:\
+    *.py=:\
+    *.rb=:\
+    *.rs=:\
+    *.scala=:\
+    *.ts=:\
+    *.vim=:\
+    *.cmd=:\
+    *.ps1=:\
+    *.sh=:\
+    *.bash=:\
+    *.zsh=:\
+    *.fish=:\
+    *.tar=:\
+    *.tgz=:\
+    *.arc=:\
+    *.arj=:\
+    *.taz=:\
+    *.lha=:\
+    *.lz4=:\
+    *.lzh=:\
+    *.lzma=:\
+    *.tlz=:\
+    *.txz=:\
+    *.tzo=:\
+    *.t7z=:\
+    *.zip=:\
+    *.z=:\
+    *.dz=:\
+    *.gz=:\
+    *.lrz=:\
+    *.lz=:\
+    *.lzo=:\
+    *.xz=:\
+    *.zst=:\
+    *.tzst=:\
+    *.bz2=:\
+    *.bz=:\
+    *.tbz=:\
+    *.tbz2=:\
+    *.tz=:\
+    *.deb=:\
+    *.rpm=:\
+    *.jar=:\
+    *.war=:\
+    *.ear=:\
+    *.sar=:\
+    *.rar=:\
+    *.alz=:\
+    *.ace=:\
+    *.zoo=:\
+    *.cpio=:\
+    *.7z=:\
+    *.rz=:\
+    *.cab=:\
+    *.wim=:\
+    *.swm=:\
+    *.dwm=:\
+    *.esd=:\
+    *.jpg=:\
+    *.jpeg=:\
+    *.mjpg=:\
+    *.mjpeg=:\
+    *.gif=:\
+    *.bmp=:\
+    *.pbm=:\
+    *.pgm=:\
+    *.ppm=:\
+    *.tga=:\
+    *.xbm=:\
+    *.xpm=:\
+    *.tif=:\
+    *.tiff=:\
+    *.png=:\
+    *.svg=:\
+    *.svgz=:\
+    *.mng=:\
+    *.pcx=:\
+    *.mov=:\
+    *.mpg=:\
+    *.mpeg=:\
+    *.m2v=:\
+    *.mkv=:\
+    *.webm=:\
+    *.ogm=:\
+    *.mp4=:\
+    *.m4v=:\
+    *.mp4v=:\
+    *.vob=:\
+    *.qt=:\
+    *.nuv=:\
+    *.wmv=:\
+    *.asf=:\
+    *.rm=:\
+    *.rmvb=:\
+    *.flc=:\
+    *.avi=:\
+    *.fli=:\
+    *.flv=:\
+    *.gl=:\
+    *.dl=:\
+    *.xcf=:\
+    *.xwd=:\
+    *.yuv=:\
+    *.cgm=:\
+    *.emf=:\
+    *.ogv=:\
+    *.ogx=:\
+    *.aac=:\
+    *.au=:\
+    *.flac=:\
+    *.m4a=:\
+    *.mid=:\
+    *.midi=:\
+    *.mka=:\
+    *.mp3=:\
+    *.mpc=:\
+    *.ogg=:\
+    *.ra=:\
+    *.wav=:\
+    *.oga=:\
+    *.opus=:\
+    *.spx=:\
+    *.xspf=:\
+    *.pdf=:\
+    *.nix=:\
+    "
