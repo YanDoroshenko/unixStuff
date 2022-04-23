@@ -32,8 +32,6 @@ HISTIGNORE='ls:ll:ls -alh:pwd:clear:history'
 HISTTIMEFORMAT='%F %T '
 # Multiple commands on one line show up as a single line
 shopt -s cmdhist
-# Append new history lines, clear the history list, re-read the history list, print prompt.
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # Currency converter
 alias currency='git/github/unixStuff/exchange.sh'
@@ -197,3 +195,22 @@ if [[ -z "$TMUX" && "$TERM" =~ ^xterm.*$ ]]; then
 elif [[ -z "$TMUX" ]]; then
     exec tmux -u
 fi
+
+function vpn_on()
+{
+    nmcli c up $1
+#    sudo ip route add 192.168.10.1 dev ppp0
+    sudo ip route add 172.16.0.0/12 dev ppp0
+    sudo ip route add 10.0.0.0/8 dev ppp0
+    sudo ip route add 192.168.224.0/19 dev ppp0
+}
+
+function vpn_off()
+{
+    nmcli c down prod || nmcli c down QA || true
+    nmcli radio wifi off
+    nmcli radio wifi on
+}
+alias prod='vpn_on prod'
+alias qa='vpn_on QA'
+alias off='vpn_off'
