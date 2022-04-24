@@ -25,6 +25,7 @@ map <enter> shell
 
 # use icons
 set icons
+set drawbox
 
 # execute current file (must be executable)
 map x $$f
