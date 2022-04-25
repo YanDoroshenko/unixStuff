@@ -58,14 +58,6 @@ cmd open ${{
     esac
 }}
 
-cmd findr ${{
-    [ -z "${1+set}" ] ||
-        res=$(bfs . -s -name "$1" -print -quit 2>/dev/null) &&
-            [ -z "$res" ] &&
-                lf -remote "send $id echo 'Not found'" ||
-                lf -remote "send $id select $res"
-}}
-
 cmd fzf_jump ${{
     res="$(find . | fzf --reverse --header='Jump to location' | sed 's/\\/\\\\/g;s/"/\\"/g')"
     if [ -d "$res" ] ; then
@@ -77,7 +69,7 @@ cmd fzf_jump ${{
     fi
     lf -remote "send $id $cmd \"$res\""
 }}
-map <c-f> :fzf_jump
+map f :fzf_jump
 
 # define a custom 'rename' command without prompt for overwrite
 # cmd rename %[ -e $1 ] && printf "file exists" || mv $f $1
