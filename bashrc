@@ -36,10 +36,7 @@ shopt -s cmdhist
 # Currency converter
 alias currency='git/github/unixStuff/exchange.sh'
 
-
-# Cmus music player
-alias cmus='udisksctl mount -p block_devices/sda1 /mnt/hdd 2>/dev/null ; cmus'
-
+# Git difftool
 alias dt='git difftool -y'
 
 # AWS credentials setup
@@ -54,7 +51,7 @@ function o {
     fi
 }
 
-alias sudo='sudo '
+alias sudo='doas '
 
 alias sd='sudo $(fc -ln -1)'
 
