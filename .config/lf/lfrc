@@ -72,11 +72,11 @@ map Z rec_find
 # map r push :rename<space>
 
 # make sure trash folder exists
-%mkdir -p ~/.trash
+%mkdir -p ~/.local/share/Trash
 
 # move current file or selected files to trash folder
 # (also see 'man mv' for backup/overwrite options)
-cmd trash %set -f; mv $fx ~/.trash/
+cmd trash %set -f; mv $fx ~/.local/share/Trash
 
 # define a custom 'delete' command
 # cmd delete ${{
