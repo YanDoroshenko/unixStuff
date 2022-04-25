@@ -37,6 +37,7 @@ fakeroot
 feh
 ffmpegthumbnailer
 file-roller
+fzf
 ghc
 ghc-static
 gimp
