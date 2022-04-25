@@ -58,6 +58,15 @@ cmd open ${{
     esac
 }}
 
+# recursive find
+cmd rec_find ${{
+    printf "Find: "
+    read path
+    res=$(find . -name *$path* -printf "%d %p\n" 2>/dev/null | sort -n | head -1 | cut -d' ' -f2)
+    lf -remote "send $id select $res"
+}}
+map Z rec_find
+
 # define a custom 'rename' command without prompt for overwrite
 # cmd rename %[ -e $1 ] && printf "file exists" || mv $f $1
 # map r push :rename<space>
