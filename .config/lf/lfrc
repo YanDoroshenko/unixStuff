@@ -50,7 +50,7 @@ cmd on-quit $stpvimg --end $id
 cmd open ${{
     test -L "$f" && f=$(readlink -f "$f")
     case $(file --mime-type "$f" -b) in
-        image/*) sxiv "$PWD" & disown ;;
+        image/*) nsxiv-rifle "$f" & disown ;;
         video/*) vlc "$f" & disown ;;
         application/pdf) mupdf "$f" & disown ;;
         text/*|application/*) $EDITOR "$fx" ;;

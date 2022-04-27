@@ -1,7 +1,10 @@
 # Based off https://github.com/LukeSmithxyz/voidrice/blob/master/.config/zsh/.zshrc
 
+export PATH="/home/yan/.local/bin":$PATH
+
 export VISUAL=nvim
 export EDITOR=$VISUAL
+
 
 # Enable colors and change prompt:
 autoload -U colors && colors	# Load colors
@@ -113,6 +116,10 @@ function vpn_off()
 alias prod='vpn_on prod'
 alias qa='vpn_on QA'
 alias off='vpn_off'
+
+# View images
+alias nsxiv="nsxiv-rifle $1"
+alias i="nsxiv"
 
 # Load syntax highlighting; should be last.
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
