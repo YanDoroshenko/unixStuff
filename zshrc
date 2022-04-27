@@ -24,7 +24,7 @@ _comp_options+=(globdots)		# Include hidden files.
 
 # vi mode
 bindkey -v
-export KEYTIMEOUT=20
+export KEYTIMEOUT=30
 
 # Go to normal Vim mode
 bindkey -M viins ';;' vi-cmd-mode
