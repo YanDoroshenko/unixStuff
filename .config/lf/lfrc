@@ -51,7 +51,7 @@ cmd open ${{
     test -L "$f" && f=$(readlink -f "$f")
     case $(file --mime-type "$f" -b) in
         image/*) nsxiv-rifle "$f" & disown ;;
-        video/*) vlc "$f" & disown ;;
+        video/*) vlc "$f" 2>/dev/null & disown ;;
         application/pdf) mupdf "$f" & disown ;;
         text/*|application/*) $EDITOR "$fx" ;;
         *) xdg-open "$f" ;;
