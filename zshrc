@@ -113,5 +113,17 @@ alias off='vpn_off'
 alias nsxiv="nsxiv-rifle $1"
 alias i="nsxiv"
 
+# Set window title
+local term_title () { print -n "\e]0;${(j: :q)@}\a" }
+precmd () {
+    local DIR="$(print -P '[%c]')"
+    term_title "$DIR" "zsh"
+}
+preexec () {
+    local DIR="$(print -P '[%c]')"
+    local CMD="${(j:\n:)${(f)1}}"
+    term_title "$DIR" "$CMD"
+}
+
 # Load syntax highlighting; should be last.
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
