@@ -1,7 +1,4 @@
-# interpreter for shell commands
-set shell sh
-
-# set '-eu' options for shell commands
+# Set '-eu' options for shell commands
 # These options are used to have safer shell commands. Option '-e' is used to
 # exit on error and option '-u' is used to give error for unset variables.
 # Option '-f' disables pathname expansion which can be useful when $f, $fs, and
@@ -10,30 +7,33 @@ set shell sh
 # times.
 set shellopts '-eu'
 
-# set internal field separator (IFS) to "\n" for shell commands
+# Set internal field separator (IFS) to "\n" for shell commands
 # This is useful to automatically split file names in $fs and $fx properly
 # since default file separator used in these variables (i.e. 'filesep' option)
 # is newline. You need to consider the values of these options and create your
 # commands accordingly.
 set ifs "\n"
 
-# leave some space at the top and the bottom of the screen
+# Leave some space at the top and the bottom of the screen
 set scrolloff 10
 
-# use enter for shell commands
+# Use enter for shell commands
 map <enter> shell
 
-# use icons
+# Set prompt
+set promptfmt "\033[31;1m[\033[33;1m%u\033[32;1m@\033[34;1m%h \033[35;1m%d\033[0m\033[1m%f\033[0m\033[31;1m]"
+
+# Use icons
 set icons
 
-# draw boxes
+# Draw boxes
 set drawbox
 
-# execute current file (must be executable)
+# Execute current file (must be executable)
 map x $$f
 map X !$f
 
-# dedicated keys for file opener actions
+# Dedicated keys for file opener actions
 map o &mimeopen $f
 map O $mimeopen --ask $f
 
@@ -43,7 +43,13 @@ set cleaner stpvimgclr
 &stpvimg --listen $id
 cmd on-quit $stpvimg --end $id
 
-# define a custom 'open' command
+# Set path to terminal title
+cmd on-cd &{{
+    printf "\033]0;[$(basename $PWD)] lf \007" > /dev/tty
+}}
+on-cd
+
+# Define a custom 'open' command
 # This command is called when current file is not a directory. You may want to
 # use either file extensions and/or mime types here. Below uses an editor for
 # text files and a file opener for the rest.
@@ -58,6 +64,7 @@ cmd open ${{
     esac
 }}
 
+# Go to file with fzf
 cmd fzf_jump ${{
     res="$(find . | fzf --reverse --header='Jump to location' | sed 's/\\/\\\\/g;s/"/\\"/g')"
     if [ -d "$res" ] ; then
@@ -71,26 +78,13 @@ cmd fzf_jump ${{
 }}
 map f :fzf_jump
 
-# define a custom 'rename' command without prompt for overwrite
-# cmd rename %[ -e $1 ] && printf "file exists" || mv $f $1
-# map r push :rename<space>
-
-# make sure trash folder exists
+# Make sure trash folder exists
 %mkdir -p ~/.local/share/Trash
 
-# move current file or selected files to trash folder
+# Move current file or selected files to trash folder
 # (also see 'man mv' for backup/overwrite options)
 cmd trash %set -f; mv $fx ~/.local/share/Trash
 
-# define a custom 'delete' command
-# cmd delete ${{
-#     set -f
-#     printf "$fx\n"
-#     printf "delete?[y/n]"
-#     read ans
-#     [ $ans = "y" ] && rm -rf $fx
-# }}
 
-# use '<delete>' key for either 'trash' or 'delete' command
+# Use '<delete>' key for 'trash' command
 map <delete> trash
-# map <delete> delete
