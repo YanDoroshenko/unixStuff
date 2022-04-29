@@ -10,6 +10,9 @@ export EDITOR=$VISUAL
 autoload -U colors && colors	# Load colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 
+# Share history
+setopt share_history
+
 # History in cache directory:
 HISTSIZE=10000000
 SAVEHIST=10000000
