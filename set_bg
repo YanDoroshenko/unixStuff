@@ -1,2 +1,4 @@
 #!/bin/sh
-feh --bg-scale $(find $1 -maxdepth 1 -type f | shuf -n 1)
+FILE=$(find $1 -maxdepth 1 -type f | shuf -n 1)
+feh --bg-scale $FILE
+cp $FILE /usr/share/slock/background.jpeg
