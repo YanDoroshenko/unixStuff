@@ -114,7 +114,7 @@ alias off='vpn_off'
 
 # View images
 alias nsxiv="nsxiv-rifle $1"
-alias i="nsxiv"
+alias i="nsxiv ."
 
 # Set window title
 local term_title () { print -n "\e]0;${(j: :q)@}\a" }
@@ -127,6 +127,8 @@ preexec () {
     local CMD="${(j:\n:)${(f)1}}"
     term_title "$DIR" "$CMD"
 }
+
+alias d2='sudo mount /dev/sda1 /mnt/hdd ; cd /mnt/hdd/diabloii/d2launcher-3.5.2 && ./d2launcher'
 
 # Load syntax highlighting; should be last.
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
