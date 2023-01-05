@@ -229,7 +229,6 @@ filetype plugin on
 " Plug plugins
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'neovimhaskell/haskell-vim'
-Plug 'lambdalisue/suda.vim'
 Plug 'radenling/vim-dispatch-neovim'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
