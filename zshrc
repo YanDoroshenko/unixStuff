@@ -18,6 +18,9 @@ HISTSIZE=10000000
 SAVEHIST=10000000
 HISTFILE=~/.cache/zsh/history
 
+# Show entire history:
+alias history='history 0'
+
 # Basic auto/tab complete:
 autoload -U compinit
 zstyle ':completion:*' menu select
@@ -128,7 +131,9 @@ preexec () {
     term_title "$DIR" "$CMD"
 }
 
-alias d2='sudo mount /dev/sda1 /mnt/hdd ; cd /mnt/hdd/diabloii/d2launcher-3.5.2 && ./d2launcher'
+alias d2='sudo mount /dev/sda1 /mnt/hdd ; /mnt/hdd/diabloii/d2launcher/d2launcher'
+
+alias cmus='sudo mount /dev/sda1 /mnt/hdd; cmus'
 
 # Load syntax highlighting; should be last.
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
