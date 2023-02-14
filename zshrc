@@ -13,6 +13,9 @@ PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magent
 # Share history
 setopt share_history
 
+# Unique history
+setopt HIST_IGNORE_ALL_DUPS
+
 # History in cache directory:
 HISTSIZE=10000000
 SAVEHIST=10000000
