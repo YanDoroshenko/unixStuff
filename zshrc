@@ -134,7 +134,7 @@ preexec () {
     term_title "$DIR" "$CMD"
 }
 
-alias d2='sudo mount /dev/sda1 /mnt/hdd ; xrandr --output eDP-1-1 --off && d2launcher & sleep 5 && ~/git/github/unixStuff/xrandr.sh'
+alias d2='sudo mount /dev/sda1 /mnt/hdd ; xrandr --output eDP-1-1 --off && d2launcher & sleep 8 && ~/git/github/unixStuff/xrandr.sh'
 
 alias cmus='sudo mount /dev/sda1 /mnt/hdd; cmus'
 
