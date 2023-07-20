@@ -84,6 +84,9 @@ autocmd FileType yaml set sw=2
 " Indents and formats for Haskell
 autocmd FileType haskell set sw=2
 
+" Indents and formats for Scala
+autocmd FileType scala set sw=2
+
 " Build TeX file
 autocmd FileType tex command! L execute "normal! mz | :exec Latex()\<cr> | `z"
 

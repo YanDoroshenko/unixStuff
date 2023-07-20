@@ -23,7 +23,7 @@
             //render_criteria: [HintImage],
             // https://github.com/Toqozz/wired-notify/wiki/NotificationBlock
             params: NotificationBlock((
-                monitor: 0,
+                monitor: -1,
                 border_width: 3.0,
                 border_rounding: 3.0,
                 background_color: (hex: "#1D1F21"),
@@ -62,9 +62,9 @@
                 font: "Arial Bold 11",
                 ellipsize: Middle,
                 color: Color(hex: "#f8f8f2"),
-                color_hovered: Color(hex: "#e8e8e2"),
+                color_hovered: Color(hex: "#d8d8d2"),
                 padding: Padding(left: 7.0, right: 7.0, top: 7.0, bottom: 0.0),
-                dimensions: (width: (min: 150, max: 250), height: (min: 0, max: 0)),
+                dimensions: (width: (min: 150, max: 300), height: (min: 0, max: 0)),
             )),
         ),
         (
@@ -76,10 +76,10 @@
             params: ScrollingTextBlock((
                 text: "%b",
                 font: "Arial 11",
-                color: Color(hex: "#ebdbb2"),
-                color_hovered: Color(hex: "#fbf1c7"),
+                color: Color(hex: "#d8d8d2"),
+                color_hovered: Color(hex: "#b8b8b2"),
                 padding: Padding(left: 7.0, right: 7.0, top: 3.0, bottom: 7.0),
-                width: (min: 150, max: 250),
+                width: (min: 150, max: 300),
                 scroll_speed: 0.1,
                 lhs_dist: 35.0,
                 rhs_dist: 35.0,

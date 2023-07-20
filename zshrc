@@ -24,6 +24,9 @@ HISTFILE=~/.cache/zsh/history
 # Show entire history:
 alias history='history 0'
 
+# History alias
+alias h='history | grep '
+
 # Basic auto/tab complete:
 autoload -U compinit
 zstyle ':completion:*' menu select
@@ -119,8 +122,11 @@ alias qa='vpn_on QA'
 alias off='vpn_off'
 
 # View images
-alias nsxiv="nsxiv-rifle $1"
-alias i="nsxiv ."
+function images()
+{
+    [ $1 ] && nsxiv-rifle $1 || nsxiv-rifle .
+}
+alias i="images "
 
 # Set window title
 local term_title () { print -n "\e]0;${(j: :q)@}\a" }
@@ -134,7 +140,7 @@ preexec () {
     term_title "$DIR" "$CMD"
 }
 
-alias d2='sudo mount /dev/sda1 /mnt/hdd ; xrandr --output eDP-1-1 --off && d2launcher & sleep 8 && ~/git/github/unixStuff/xrandr.sh'
+alias d2='sudo mount /dev/sda1 /mnt/hdd ; xrandr --output eDP-1 --off && d2launcher & sleep 8 && ~/git/github/unixStuff/xrandr.sh'
 
 alias cmus='sudo mount /dev/sda1 /mnt/hdd; cmus'
 
