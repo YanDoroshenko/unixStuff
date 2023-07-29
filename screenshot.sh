@@ -51,10 +51,10 @@ if [ "$output" == "$COPY_TO_CLIPBOARD" ]; then
     notify-send "Screenshot copied to clipboard" -h "string:image-path:$tmp_file" -t 2000
     rm $tmp_file
 else
-    output_file="$(zenity --file-selection --save --title="Save screenshot as:").png"
+    output_file="$(zenity --file-selection --save --title="Save screenshot as:")"
     if [ ! -z $output_file ]; then
+        notify-send "Saving screenshot as $output_file" -h "string:image-path:$tmp_file" -t 2000
         mv $tmp_file $output_file
-        notify-send "Screenshot saved as $output_file" -h "string:image-path:$output_file" -t 2000
     fi
 fi
 
