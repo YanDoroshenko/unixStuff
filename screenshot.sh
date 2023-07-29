@@ -29,6 +29,9 @@ if [ "$capture" == "$SELECT" ]; then
     sxot --geom $(sx4 -c "#5cd5ff"; sleep $delay) | ffmpeg -i - "$tmp_file"
 elif [ "$capture" == "$ONE_SCREEN" ]; then
     monitor=$(xrandr --listactivemonitors | tail -n+2 | awk -F + '{ print $3,$4,$1 }' | sort | awk '{ print substr($4, 0, 1) }' | dmenu -nf $DMENU_FONT -nb $DMENU_NB -nf $DMENU_NF -sb $DMENU_SB -sf $DMENU_SF)
+    if [ -z "$monitor" ]; then
+        exit 0
+    fi
     sleep $delay
     sxot --monitor $monitor | ffmpeg -i - "$tmp_file"
 else
