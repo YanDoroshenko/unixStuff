@@ -1,2 +1,2 @@
 #!/bin/sh
-slock & systemctl suspend
+slock & sleep 1 && systemctl suspend
