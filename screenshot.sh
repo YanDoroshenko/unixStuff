@@ -13,11 +13,11 @@ if [ -z "$delay" ]; then
     exit 0
 fi
 
-ALL_SCREENS="Capture all screens"
-ONE_SCREEN="Capture a screen"
 SELECT="Select area to capture"
+ONE_SCREEN="Capture a screen"
+ALL_SCREENS="Capture all screens"
 
-capture=$(echo -e "$ONE_SCREEN\n$SELECT\n$ALL_SCREENS" | dmenu -nf $DMENU_FONT -nb $DMENU_NB -nf $DMENU_NF -sb $DMENU_SB -sf $DMENU_SF)
+capture=$(echo -e "$SELECT\n$ONE_SCREEN\n$ALL_SCREENS" | dmenu -nf $DMENU_FONT -nb $DMENU_NB -nf $DMENU_NF -sb $DMENU_SB -sf $DMENU_SF)
 
 if [ -z "$capture" ]; then
     exit 0
