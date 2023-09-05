@@ -32,10 +32,10 @@ elif [ "$capture" == "$ONE_SCREEN" ]; then
     if [ -z "$monitor" ]; then
         exit 0
     fi
-    sleep $delay
-    sxot --monitor $monitor | ffmpeg -i - "$tmp_file"
+    sleep "$delay"
+    sxot --monitor "$monitor" | ffmpeg -i - "$tmp_file"
 else
-    sleep $delay
+    sleep "$delay"
     sxot | ffmpeg -i - "$tmp_file"
 fi
 
@@ -44,8 +44,8 @@ SAVE_TO_FILE="Save screenshot to file"
 
 output=$(echo -e "$COPY_TO_CLIPBOARD\n$SAVE_TO_FILE" | dmenu -nf $DMENU_FONT -nb $DMENU_NB -nf $DMENU_NF -sb $DMENU_SB -sf $DMENU_SF)
 
-if [ -z $output ]; then
-    rm $tmp_file
+if [ -z "$output" ]; then
+    rm "$tmp_file"
     exit 0
 fi
 
@@ -55,9 +55,9 @@ if [ "$output" == "$COPY_TO_CLIPBOARD" ]; then
     rm $tmp_file
 else
     output_file="$(zenity --file-selection --save --title="Save screenshot as:")"
-    if [ ! -z $output_file ]; then
+    if [ ! -z "$output_file" ]; then
         notify-send "Saving screenshot as $output_file" -h "string:image-path:$tmp_file" -t 2000
-        mv $tmp_file $output_file
+        mv "$tmp_file $output_file"
     fi
 fi
 
