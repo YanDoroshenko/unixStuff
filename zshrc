@@ -16,10 +16,10 @@ setopt share_history
 # Unique history
 setopt HIST_IGNORE_ALL_DUPS
 
-# History in cache directory:
+# History in directory:
 HISTSIZE=10000000
 SAVEHIST=10000000
-HISTFILE=~/.cache/zsh/history
+HISTFILE=~/.cache/zsh_history
 
 # Show entire history:
 alias history='history 0'
@@ -141,8 +141,6 @@ preexec () {
 }
 
 alias d2='sudo mount /dev/sda1 /mnt/hdd ; xrandr --output eDP-1 --off && d2launcher & sleep 8 && ~/git/github/unixStuff/xrandr.sh'
-
-alias cmus='sudo mount /dev/sda1 /mnt/hdd; cmus'
 
 # Load syntax highlighting; should be last.
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
