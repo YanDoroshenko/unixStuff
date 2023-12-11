@@ -16,7 +16,7 @@ setopt share_history
 # Unique history
 setopt HIST_IGNORE_ALL_DUPS
 
-# History in directory:
+# History in cache directory:
 HISTSIZE=10000000
 SAVEHIST=10000000
 HISTFILE=~/.cache/zsh_history
@@ -25,7 +25,7 @@ HISTFILE=~/.cache/zsh_history
 alias history='history 0'
 
 # History alias
-alias h='history | grep '
+alias h='history | grep -i '
 
 # Basic auto/tab complete:
 autoload -U compinit
@@ -99,7 +99,11 @@ alias m='y -Rncs $(y -Qdtq) 2>/dev/null'
 alias l='pacman -Q | grep'
 
 # AWS credentials setup
-alias creds='~/git/resident/hub/tools/get_aws_credentials/okta_aws.py'
+alias creds='~/git/resident/dev_tools/get_aws_credentials/okta_aws.py'
+
+# Reboot and shutdown
+alias reboot='doas /sbin/reboot'
+alias poweroff='doas /sbin/poweroff'
 
 # VPN
 function vpn_on()
@@ -140,7 +144,7 @@ preexec () {
     term_title "$DIR" "$CMD"
 }
 
-alias d2='sudo mount /dev/sda1 /mnt/hdd ; xrandr --output eDP-1 --off && d2launcher & sleep 8 && ~/git/github/unixStuff/xrandr.sh'
+alias d2="xrandr --output $(xrandr | grep "^eDP-[0-9].* connected" | cut -d' ' -f1) --off && d2launcher"
 
 # Load syntax highlighting; should be last.
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
