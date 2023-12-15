@@ -1,4 +1,5 @@
 #!/bin/sh
+
 case $1 in
     up) brillo -A 10 ;;
     down) brillo -U 10 ;;
@@ -18,4 +19,3 @@ else
     notify-send -r "$NOTIFICATION_ID" -i "display-brightness-symbolic" -h "int:value:$BRIGHTNESS" "Brightness: $BRIGHTNESS %" -u low -t 1000 -p > "$NOTIFICATION_ID_FILE"
 fi
 
-echo $NOTIFICATION_ID
