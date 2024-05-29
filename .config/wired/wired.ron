@@ -5,7 +5,7 @@
     timeout: 10000,
 
     poll_interval: 16,
-    idle_poll_interval: 1,
+    idle_poll_interval: 50,
 
     // Enable/disable debug rendering.
     debug: false,
