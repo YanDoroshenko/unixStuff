@@ -6,10 +6,12 @@ syntax on
 " Color scheme settings for virtual console
 set t_Co=256
 set cursorline
+colorscheme vim
 hi CursorLineNR ctermfg=white
 hi CursorLine cterm=none
 hi LineNr ctermfg=darkgrey
 hi Normal ctermbg=235
+hi Visual ctermfg=none ctermbg=242
 set background=dark
 
 " Case insensitive search by default
