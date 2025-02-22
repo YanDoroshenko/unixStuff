@@ -1,15 +1,23 @@
 #!/bin/sh
 
+POWER_PROFILE_FILE="/home/yan/.config/.power_profile"
 BACKLIGHT_LEVEL=$(xbacklight -get)
 
-if [ "$(system76-power profile | head -1 | cut -d' ' -f3)" = "Battery" ]; then
-    system76-power profile balanced
+echo $BACKLIGHT_LEVEL
+
+touch $POWER_PROFILE_FILE
+
+if [ "$1" = "-init" ]; then
+    system76-power profile $(cat $POWER_PROFILE_FILE)
+elif [ "$(cat $POWER_PROFILE_FILE)" = "balanced" ]; then
+    system76-power profile battery &&
+    echo "battery" > $POWER_PROFILE_FILE &&
+    xbacklight -set "$BACKLIGHT_LEVEL" &&
+    notify-send "Power profile: Battery"
 else
-    system76-power profile battery
+    system76-power profile balanced &&
+    echo "balanced" > $POWER_PROFILE_FILE &&
+    xbacklight -set "$BACKLIGHT_LEVEL" &&
+    notify-send "Power profile: Balanced"
 fi
-
-xbacklight -set "$BACKLIGHT_LEVEL"
-
-notify-send "Power profile: $(system76-power profile | head -1 | cut -d' ' -f3)"
-
 

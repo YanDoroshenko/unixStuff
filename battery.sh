@@ -1,6 +1,8 @@
 #!/bin/sh
 
-CHARGE_PROFILE_FILE="/etc/charge_profile"
+CHARGE_PROFILE_FILE="$(realpath .)/.config/.charge_profile"
+
+touch $CHARGE_PROFILE_FILE
 
 if [ "$(cat $CHARGE_PROFILE_FILE)" = "full_charge" ]; then
     doas -n /sbin/system76-power charge-thresholds --profile max_lifespan &&
