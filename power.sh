@@ -1,7 +1,7 @@
 #!/bin/sh
 
 POWER_PROFILE_FILE="/home/yan/.config/.power_profile"
-BACKLIGHT_LEVEL=$(xbacklight -get)
+BACKLIGHT_LEVEL=$(brillo)
 
 echo $BACKLIGHT_LEVEL
 
@@ -12,12 +12,12 @@ if [ "$1" = "-init" ]; then
 elif [ "$(cat $POWER_PROFILE_FILE)" = "balanced" ]; then
     system76-power profile battery &&
     echo "battery" > $POWER_PROFILE_FILE &&
-    xbacklight -set "$BACKLIGHT_LEVEL" &&
+    brillo -S "$BACKLIGHT_LEVEL" &&
     notify-send "Power profile: Battery"
 else
     system76-power profile balanced &&
     echo "balanced" > $POWER_PROFILE_FILE &&
-    xbacklight -set "$BACKLIGHT_LEVEL" &&
+    brillo -S "$BACKLIGHT_LEVEL" &&
     notify-send "Power profile: Balanced"
 fi
 
