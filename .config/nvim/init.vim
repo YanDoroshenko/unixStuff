@@ -14,6 +14,12 @@ hi Normal ctermbg=235
 hi Visual ctermfg=none ctermbg=242
 set background=dark
 
+" Fix Neovim colors
+hi StatusLine cterm=bold
+hi StatusLineNc cterm=none
+hi TabLineFill cterm=none
+
+
 " Case insensitive search by default
 set ignorecase
 
@@ -384,6 +390,7 @@ if !(TERM ==# "linux")
                 \ 'airline_a': [ s:airline_a_insert[0]   , '#d78700' , s:airline_a_insert[2] , 172     , ''     ] ,
                 \ }
 
+    let g:airline#themes#dark#palette.terminal = airline#themes#generate_color_map(s:airline_a_insert, s:airline_b_insert, s:airline_c_insert)
 
     let g:airline#themes#dark#palette.replace = copy(g:airline#themes#dark#palette.insert)
     let g:airline#themes#dark#palette.replace.airline_a = [ s:airline_b_insert[0]   , '#af0000' , s:airline_b_insert[2] , 124     , ''     ]
@@ -408,10 +415,10 @@ if !(TERM ==# "linux")
                 \ }
 
     " For commandline mode, we use the colors from normal mode, except the mode
-    " indicator should be colored differently, e.g. blue on light green
-    let s:airline_a_commandline   = [ '#00005f' , '#dfff00' , 17 , 178 ]
-    let s:airline_b_commandline   = [ '#ffffff' , '#444444' , 255 , 238 ]
-    let s:airline_c_commandline   = [ '#9cffd3' , '#202020' , 85  , 234 ]
+    " indicator should be colored differently, e.g. light green
+    let s:airline_a_commandline = [ '#00005f' , '#00d700' , 17  , 40 ]
+    let s:airline_b_commandline = [ '#ffffff' , '#444444' , 255 , 238 ]
+    let s:airline_c_commandline = [ '#9cffd3' , '#202020' , 85  , 234 ]
     let g:airline#themes#dark#palette.commandline = airline#themes#generate_color_map(s:airline_a_commandline, s:airline_b_commandline, s:airline_c_commandline)
 
     " Accents are used to give parts within a section a slightly different look or
@@ -427,7 +434,7 @@ if !(TERM ==# "linux")
 
 
     " Here we define the color map for ctrlp.  We check for the g:loaded_ctrlp
-    " variable so that related functionality is loaded iff the user is using
+    " variable so that related functionality is loaded if the user is using
     " ctrlp. Note that this is optional, and if you do not define ctrlp colors
     " they will be chosen automatically from the existing palette.
     if get(g:, 'loaded_ctrlp', 0)
