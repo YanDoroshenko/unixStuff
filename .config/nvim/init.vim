@@ -6,6 +6,8 @@ syntax on
 " Color scheme settings for virtual console
 set t_Co=256
 set cursorline
+
+set notermguicolors
 colorscheme vim
 hi CursorLineNR ctermfg=white
 hi CursorLine cterm=none
