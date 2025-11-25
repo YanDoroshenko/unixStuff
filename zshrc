@@ -91,7 +91,7 @@ alias mkdir='mkdir -p'
 alias p='ping -c 3 google.com'
 
 # Package aliases #
-alias y='yay --color=always '
+alias y='yay --color=always --sudo doas '
 alias g='y -S '
 alias ug='y -Rncs '
 alias u='y -Syyuu '
