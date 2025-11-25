@@ -3,3 +3,4 @@ sleep $2
 FILE=$(find $1 -maxdepth 1 -type f | shuf -n 1)
 cp $FILE /usr/share/slock/background_full.jpeg
 magick $FILE -filter Point -resize 0.5% -resize 20000% /usr/share/slock/background.jpeg
+feh --bg-scale "/usr/share/slock/background_full.jpeg"
